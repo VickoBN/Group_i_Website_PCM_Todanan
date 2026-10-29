@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from .models import AmalUsaha, Pimpinan, Profil, Ranting
+from .models import (
+   Agenda, AmalUsaha, Berita, Dokumen, Pimpinan, Profil, Ranting, TautanTerkait,
+)
 
 admin.site.site_header = 'Admin Website PCM Todanan'
 admin.site.site_title = 'Admin PCM Todanan'
@@ -36,3 +38,31 @@ class AmalUsahaAdmin(admin.ModelAdmin):
    list_display = ('nama', 'bidang', 'alamat')
    list_filter = ('bidang',)
    search_fields = ('nama',)
+
+   
+@admin.register(Berita)
+class BeritaAdmin(admin.ModelAdmin):
+   list_display = ('judul', 'status', 'tanggal_terbit')
+   list_filter = ('status',)
+   search_fields = ('judul', 'ringkasan')
+   prepopulated_fields = {'slug': ('judul',)}
+   date_hierarchy = 'tanggal_terbit'
+
+
+@admin.register(Agenda)
+class AgendaAdmin(admin.ModelAdmin):
+   list_display = ('nama_kegiatan', 'waktu_mulai', 'tempat')
+   list_filter = ('waktu_mulai',)
+   search_fields = ('nama_kegiatan', 'tempat')
+
+
+@admin.register(Dokumen)
+class DokumenAdmin(admin.ModelAdmin):
+   list_display = ('judul', 'tanggal_unggah')
+   search_fields = ('judul',)
+
+
+@admin.register(TautanTerkait)
+class TautanTerkaitAdmin(admin.ModelAdmin):
+   list_display = ('nama', 'url', 'urutan')
+   list_editable = ('urutan',)
