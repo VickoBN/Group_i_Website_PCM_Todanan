@@ -5,25 +5,26 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 👥 1. Informasi Anggota Kelompok
+##  1. Informasi Anggota Kelompok
 
-* **Nama Kelompok:** [Isi Nama Kelompok Anda]
+* **Nama Kelompok:** Kelompok I
 * **Anggota Kelompok:**
-  1.  - NIM: 
-  2.  - NIM: 
-  3.  - NIM: 
-  4.  - NIM: 
+  1.  Kayla Raniahasna NIM: L200240008 
+  2.  Vicko Bahctiar Nurrahmat NIM: L200240033
+  3.  Gladiza Fauzura Ristandanty NIM: L200240037
+  4.  Adrian Ega Fareelio NIM: L200240047
+  5.  Erbita Putri Apriliyana NIM: L200240054
 
 ---
 
-## 📍 2. PCM yang Dipilih
+##  2. PCM yang Dipilih
 
 * **Nama Organisasi:** Pimpinan Cabang Muhammadiyah Todanan (PCM Todanan)
 * **Wilayah:** Kecamatan Todanan, Kabupaten Blora, Jawa Tengah
 
 ---
 
-## 📊 3. Tabel Sumber Data & Perizinan
+##  3. Tabel Sumber Data & Perizinan
 
 | Jenis / Nama Data | Sumber Data | Tanggal Diambil | Pengurus Memberi Izin / Catatan |
 | :--- | :--- | :---: | :--- |
@@ -37,7 +38,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 🏛️ 4. Profil Organisasi
+##  4. Profil Organisasi
 
 | Parameter | Keterangan / Detail |
 | :--- | :--- |
@@ -54,7 +55,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 👤 5. Data Pimpinan
+##  5. Data Pimpinan
 
 | Parameter | Detail Pimpinan |
 | :--- | :--- |
@@ -65,7 +66,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 🏢 6. Daftar Pimpinan Ranting Muhammadiyah (PRM)
+##  6. Daftar Pimpinan Ranting Muhammadiyah (PRM)
 
 | No. | Nama Ranting (PRM) | Nama Ketua Ranting | Alamat / Lokasi |
 | :---: | :--- | :--- | :--- |
@@ -80,7 +81,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 📄 7. Dokumen & Berkas Resmi Organisasi
+##  7. Dokumen & Berkas Resmi Organisasi
 
 | Judul Berkas | Keterangan Dokumen | Tgl Unggah / Terbit | Sumber / Tautan |
 | :--- | :--- | :---: | :---: |
@@ -90,7 +91,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 📰 8. Berita & Publikasi PCM Todanan
+##  8. Berita & Publikasi PCM Todanan
 
 1. 🔗 [Berita PCM Todanan 1](https://share.google/hXuU3HCn0XRZ3SB94)
 2. 🔗 [Berita PCM Todanan 2](https://share.google/c1QuOGOxoxBIhVfET)
@@ -98,7 +99,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 ---
 
-## 📅 9. Agenda & Kegiatan
+##  9. Agenda & Kegiatan
 
 | Kategori | Judul Agenda | Waktu Pelaksanaan | Lokasi | Keterangan |
 | :--- | :--- | :---: | :---: | :--- |
