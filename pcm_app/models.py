@@ -48,3 +48,38 @@ class Pimpinan(models.Model):
 
     def __str__(self):
         return f'{self.nama} ({self.jabatan})'
+
+
+
+class Ranting(models.Model):
+    nama = models.CharField(max_length=100)
+    ketua = models.CharField(max_length=150, blank=True)
+    alamat = models.CharField(max_length=255, blank=True)
+    telepon = models.CharField(max_length=30, blank=True, help_text='Hanya kontak resmi.')
+
+    class Meta:
+        ordering = ['nama']
+
+    def __str__(self):
+        return self.nama
+
+
+class AmalUsaha(models.Model):
+    class Bidang(models.TextChoices):
+        PENDIDIKAN = 'pendidikan', 'Pendidikan'
+        KESEHATAN = 'kesehatan', 'Kesehatan'
+        SOSIAL = 'sosial', 'Sosial'
+        EKONOMI = 'ekonomi', 'Ekonomi'
+
+    nama = models.CharField(max_length=200)
+    bidang = models.CharField(max_length=20, choices=Bidang.choices)
+    deskripsi = models.TextField(blank=True)
+    alamat = models.CharField(max_length=255, blank=True)
+    gambar = models.ImageField(upload_to='amal-usaha/', blank=True)
+
+    class Meta:
+        ordering = ['bidang', 'nama']
+        verbose_name_plural = 'Amal usaha'
+
+    def __str__(self):
+        return self.nama
