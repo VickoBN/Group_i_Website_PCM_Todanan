@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{{ berita.judul }}{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ berita.judul }}</h1>
+  <p><small>{{ berita.tanggal_terbit|date:'d F Y' }}</small></p>
+  {% if berita.gambar_sampul %}<img src='{{ berita.gambar_sampul.url }}' alt='{{ berita.judul }}'>{% endif %}
+  <div>{{ berita.isi|linebreaks }}</div>
+  {% if berita.sumber_url %}
+    <p>Sumber: <a href='{{ berita.sumber_url }}' target='_blank' rel='noopener'>baca di sumber asli</a></p>
+  {% endif %}
+</article>
+
+{% if lainnya %}
+<h2>Berita lainnya</h2>
+<div class='grid'>
+  {% for berita in lainnya %}{% include 'partials/kartu_berita.html' %}{% endfor %}
+</div>
+{% endif %}
+{% endblock %}
