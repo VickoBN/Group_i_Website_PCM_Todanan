@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-   Agenda, AmalUsaha, Berita, Dokumen, Pimpinan, Profil, Ranting, TautanTerkait,
+   Agenda, AmalUsaha, Berita, Dokumen, Pimpinan, Profil, Ranting, TautanTerkait, PesanMasuk,
 )
 
 admin.site.site_header = 'Admin Website PCM Todanan'
@@ -39,7 +39,7 @@ class AmalUsahaAdmin(admin.ModelAdmin):
    list_filter = ('bidang',)
    search_fields = ('nama',)
 
-   
+
 @admin.register(Berita)
 class BeritaAdmin(admin.ModelAdmin):
    list_display = ('judul', 'status', 'tanggal_terbit')
@@ -66,3 +66,14 @@ class DokumenAdmin(admin.ModelAdmin):
 class TautanTerkaitAdmin(admin.ModelAdmin):
    list_display = ('nama', 'url', 'urutan')
    list_editable = ('urutan',)
+
+
+@admin.register(PesanMasuk)
+class PesanMasukAdmin(admin.ModelAdmin):
+   list_display = ('subjek', 'nama', 'email', 'waktu_kirim', 'sudah_dibaca')
+   list_filter = ('sudah_dibaca', 'waktu_kirim')
+   search_fields = ('nama', 'email', 'subjek')
+   readonly_fields = ('nama', 'email', 'subjek', 'pesan', 'waktu_kirim')
+
+   def has_add_permission(self, request):
+       return False
