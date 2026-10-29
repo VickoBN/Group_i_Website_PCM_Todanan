@@ -1,0 +1,24 @@
+<footer class='site-footer'>
+  <div class='container footer-grid'>
+    <div>
+      <h3>{{ profil.nama|default:'PCM Todanan' }}</h3>
+      <p>{{ profil.alamat|default:'Alamat belum tersedia' }}</p>
+      {% if profil.telepon %}<p>Telepon: {{ profil.telepon }}</p>{% endif %}
+      {% if profil.email %}<p>Email: {{ profil.email }}</p>{% endif %}
+    </div>
+    <div>
+      <h3>Tautan Persyarikatan</h3>
+      <ul>
+        {% for tautan in tautan_list %}
+          <li><a href='{{ tautan.url }}' target='_blank' rel='noopener'>{{ tautan.nama }}</a></li>
+        {% empty %}
+          <li>Belum ada tautan.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class='container footer-note'>
+    <p>Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework, bukan website resmi PCM Todanan.</p>
+    <p>Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis, via Wikimedia Commons, lisensi CC BY-SA 4.0. Sumber data dan foto lain tercantum di README repo.</p>
+  </div>
+</footer>
