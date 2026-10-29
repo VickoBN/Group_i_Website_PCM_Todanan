@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Berita | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Berita</h1>
+<div class='grid'>
+  {% for berita in halaman %}
+    {% include 'partials/kartu_berita.html' %}
+  {% empty %}
+    <p>Belum ada berita.</p>
+  {% endfor %}
+</div>
+
+{% if halaman.has_other_pages %}
+<nav class='paginasi'>
+  {% if halaman.has_previous %}<a href='?page={{ halaman.previous_page_number }}'>&laquo; Sebelumnya</a>{% endif %}
+  <span>Halaman {{ halaman.number }} dari {{ halaman.paginator.num_pages }}</span>
+  {% if halaman.has_next %}<a href='?page={{ halaman.next_page_number }}'>Berikutnya &raquo;</a>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}
