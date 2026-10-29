@@ -83,3 +83,45 @@ class AmalUsaha(models.Model):
 
     def __str__(self):
         return self.nama
+
+
+class BeritaQuerySet(models.QuerySet):
+    def terbit(self):
+        return self.filter(
+            status=Berita.Status.TERBIT,
+            tanggal_terbit__lte=timezone.now(),
+        )
+
+
+class Berita(models.Model):
+    class Status(models.TextChoices):
+        DRAF = 'draf', 'Draf'
+        TERBIT = 'terbit', 'Terbit'
+
+    judul = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
+    ringkasan = models.CharField(max_length=300)
+    isi = models.TextField()
+    gambar_sampul = models.ImageField(upload_to='berita/', blank=True)
+    sumber_url = models.URLField(blank=True, help_text='Tautan berita asli, jika ada.')
+    tanggal_terbit = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.DRAF)
+
+    objects = BeritaQuerySet.as_manager()
+
+    class Meta:
+        ordering = ['-tanggal_terbit']
+        verbose_name_plural = 'Berita'
+
+    def __str__(self):
+        return self.judul
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            dasar = slugify(self.judul)[:200] or 'berita'
+            slug, nomor = dasar, 2
+            while Berita.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{dasar}-{nomor}'
+                nomor += 1
+            self.slug = slug
+        super().save(*args, **kwargs)    
