@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCM Todanan</title>
+</head>
+<body>
+    <h1>{{ profil.nama|default:'PCM Todanan' }}</h1>
+    <p>{{ profil.tagline|default:'Selamat datang di website PCM Todanan' }}</p>
+
+    <section>
+        <h2>Statistik PCM Todanan</h2>
+        <p>Jumlah Ranting: {{ jumlah_ranting }}</p>
+        <p>Jumlah Amal Usaha: {{ jumlah_amal_usaha }}</p>
+    </section>
+</body>
+</html>
