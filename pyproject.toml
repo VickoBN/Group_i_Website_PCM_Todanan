@@ -1,0 +1,13 @@
+[project]
+name = "group-i-website-pcm-todanan"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "dj-database-url>=3.1.2",
+    "django>=6,<7",
+    "gunicorn>=26.2.0",
+    "pillow>=13.0.0",
+    "psycopg[binary]>=3.3.6",
+    "python-dotenv>=1.2.4",
+    "whitenoise>=6.12.0",
+]
