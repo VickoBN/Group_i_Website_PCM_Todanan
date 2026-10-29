@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='id'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>{% block title %}{{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}</title>
+  <link rel='stylesheet' href='{% static 'css/style.css' %}'>
+</head>
+<body>
+  <header class='site-header'>
+    <div class='container header-inner'>
+      <a class='brand' href='{% url 'pcm_app:beranda' %}'>
+        <img src='{% static 'img/muhammadiyah.svg' %}' alt='Logo Muhammadiyah' height='48'>
+        <span><strong>{{ profil.nama_singkat|default:'PCM Todanan' }}</strong><small>{{ profil.tagline }}</small></span>
+      </a>
+      <input type='checkbox' id='menu-toggle' class='menu-toggle'>
+      <label for='menu-toggle' class='menu-button' aria-label='Buka menu'>☰</label>
+      <nav class='nav'>
+        <a href='{% url 'pcm_app:beranda' %}'>Beranda</a>
+        <a href='{% url 'pcm_app:profil' %}'>Profil</a>
+        <a href='{% url 'pcm_app:pimpinan' %}'>Pimpinan</a>
+        <a href='{% url 'pcm_app:ranting' %}'>Ranting</a>
+        <a href='{% url 'pcm_app:amal_usaha' %}'>Amal Usaha</a>
+        <a href='{% url 'pcm_app:berita_list' %}'>Berita</a>
+        <a href='{% url 'pcm_app:agenda' %}'>Agenda</a>
+        <a href='{% url 'pcm_app:unduhan' %}'>Unduhan</a>
+        <a href='{% url 'pcm_app:kontak' %}'>Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+    <div class='container'>
+      {% for pesan in messages %}
+        <div class='alert alert-{{ pesan.tags }}'>{{ pesan }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main class='container'>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
