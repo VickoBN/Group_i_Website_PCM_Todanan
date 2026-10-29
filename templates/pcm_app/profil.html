@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Profil | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Profil</h1>
+
+<h2>Tentang</h2>
+<p>{{ profil.tentang|default:'Belum tersedia.'|linebreaksbr }}</p>
+
+<h2>Sejarah</h2>
+<p>{{ profil.sejarah|default:'Belum tersedia.'|linebreaksbr }}</p>
+
+<h2>Visi</h2>
+<p>{{ profil.visi|default:'Belum tersedia.'|linebreaksbr }}</p>
+
+<h2>Misi</h2>
+{% if profil.daftar_misi %}
+  <ol>{% for misi in profil.daftar_misi %}<li>{{ misi }}</li>{% endfor %}</ol>
+{% else %}
+  <p>Belum tersedia.</p>
+{% endif %}
+{% endblock %}

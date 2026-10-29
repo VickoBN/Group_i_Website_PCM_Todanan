@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import placeholder
 
-# Orang 3: ganti baris komentar ini dengan: from . import views
+from . import views
 
 # Orang 4: ganti baris komentar ini dengan: from . import views_konten
 
@@ -11,7 +11,7 @@ app_name = 'pcm_app'
 urlpatterns = [
     # --- Bagian Orang 3 ---
     path('', placeholder.sementara, name='beranda'),
-    path('profil/', placeholder.sementara, name='profil'),
+    path('profil/', views.halaman_profil, name='profil'),
     path('pimpinan/', placeholder.sementara, name='pimpinan'),
     path('ranting/', placeholder.sementara, name='ranting'),
     path('amal-usaha/', placeholder.sementara, name='amal_usaha'),
