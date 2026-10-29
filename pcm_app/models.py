@@ -1,59 +1,50 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
-
-class Agenda(models.Model):
-    nama_kegiatan = models.CharField(max_length=200)
-    waktu_mulai = models.DateTimeField()
-    tempat = models.CharField(max_length=200, blank=True)
-    keterangan = models.TextField(blank=True)
-
-    class Meta:
-        ordering = ['waktu_mulai']
-        verbose_name_plural = 'Agenda'
-
-    def __str__(self):
-        return self.nama_kegiatan
+from django.utils.text import slugify
 
 
-class Dokumen(models.Model):
-    judul = models.CharField(max_length=200)
-    keterangan = models.TextField(blank=True)
-    berkas = models.FileField(upload_to='dokumen/', blank=True)
-    tautan_eksternal = models.URLField(blank=True, help_text='Isi jika dokumen berupa tautan.')
-    tanggal_unggah = models.DateField(default=timezone.localdate)
+class Profil(models.Model):
+    nama = models.CharField(max_length=200)
+    nama_singkat = models.CharField(max_length=50)
+    tagline = models.CharField(max_length=200, blank=True)
+    tentang = models.TextField(blank=True)
+    sejarah = models.TextField(blank=True)
+    visi = models.TextField(blank=True)
+    misi = models.TextField(blank=True, help_text='Satu misi per baris.')
+    alamat = models.CharField(max_length=255, blank=True)
+    telepon = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(blank=True)
+    jumlah_anggota_ktam = models.PositiveIntegerField(default=0)
+    gambar_hero = models.ImageField(upload_to='hero/', blank=True)
 
     class Meta:
-        ordering = ['-tanggal_unggah']
-        verbose_name_plural = 'Dokumen'
-
-    def __str__(self):
-        return self.judul
-
-
-class TautanTerkait(models.Model):
-    nama = models.CharField(max_length=150)
-    url = models.URLField()
-    urutan = models.PositiveIntegerField(default=0)
-
-    class Meta:
-        ordering = ['urutan', 'nama']
-        verbose_name_plural = 'Tautan terkait'
+        verbose_name = 'Profil organisasi'
+        verbose_name_plural = 'Profil organisasi'
 
     def __str__(self):
         return self.nama
 
+    def save(self, *args, **kwargs):
+        if not self.pk and Profil.objects.exists():
+            raise ValidationError('Profil organisasi hanya boleh satu baris.')
+        super().save(*args, **kwargs)
 
-class PesanMasuk(models.Model):
+    @property
+    def daftar_misi(self):
+        return [baris.strip() for baris in self.misi.splitlines() if baris.strip()]
+
+
+class Pimpinan(models.Model):
     nama = models.CharField(max_length=150)
-    email = models.EmailField()
-    subjek = models.CharField(max_length=200)
-    pesan = models.TextField()
-    waktu_kirim = models.DateTimeField(auto_now_add=True)
-    sudah_dibaca = models.BooleanField(default=False)
+    jabatan = models.CharField(max_length=100)
+    periode = models.CharField(max_length=20, help_text='Contoh: 2023–2028')
+    foto = models.ImageField(upload_to='pimpinan/', blank=True)
+    urutan = models.PositiveIntegerField(default=0)
 
     class Meta:
-        ordering = ['-waktu_kirim']
-        verbose_name_plural = 'Pesan masuk'
+        ordering = ['urutan', 'nama']
+        verbose_name_plural = 'Pimpinan'
 
     def __str__(self):
-        return f'{self.subjek} dari {self.nama}'
+        return f'{self.nama} ({self.jabatan})'
