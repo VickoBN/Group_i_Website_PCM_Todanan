@@ -1,0 +1,8 @@
+<article class='kartu'>
+  {% if berita.gambar_sampul %}<img src='{{ berita.gambar_sampul.url }}' alt='{{ berita.judul }}'>{% endif %}
+  <div class='kartu-isi'>
+    <small>{{ berita.tanggal_terbit|date:'d F Y' }}</small>
+    <h3><a href='{% url 'pcm_app:berita_detail' berita.slug %}'>{{ berita.judul }}</a></h3>
+    <p>{{ berita.ringkasan }}</p>
+  </div>
+</article>
