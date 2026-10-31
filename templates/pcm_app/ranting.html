@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Ranting | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Pimpinan Ranting Muhammadiyah</h1>
+<div class='tabel-scroll'>
+  <table>
+    <thead>
+      <tr><th>No.</th><th>Nama ranting</th><th>Ketua</th><th>Alamat</th></tr>
+    </thead>
+    <tbody>
+      {% for ranting in daftar_ranting %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ ranting.nama }}</td>
+        <td>{{ ranting.ketua|default:'-' }}</td>
+        <td>{{ ranting.alamat|default:'-' }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan='4'>Data ranting belum tersedia.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
