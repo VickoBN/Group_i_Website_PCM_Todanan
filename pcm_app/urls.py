@@ -11,7 +11,7 @@ app_name = 'pcm_app'
 urlpatterns = [
     path('', placeholder.sementara, name='beranda'),
     path('profil/', views.halaman_profil, name='profil'),
-    path('pimpinan/', placeholder.sementara, name='pimpinan'),
+    path('pimpinan/', views.halaman_pimpinan, name='pimpinan'),
     path('ranting/', placeholder.sementara, name='ranting'),
     path('amal-usaha/', placeholder.sementara, name='amal_usaha'),
 

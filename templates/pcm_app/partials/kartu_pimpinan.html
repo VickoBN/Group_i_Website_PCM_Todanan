@@ -1,0 +1,12 @@
+<article class='kartu'>
+  {% if pimpinan.foto %}
+    <img src='{{ pimpinan.foto.url }}' alt='{{ pimpinan.nama }}'>
+  {% else %}
+    <div class='foto-kosong'>Foto belum tersedia</div>
+  {% endif %}
+  <div class='kartu-isi'>
+    <h3>{{ pimpinan.nama }}</h3>
+    <p>{{ pimpinan.jabatan }}</p>
+    <small>Periode {{ pimpinan.periode }}</small>
+  </div>
+</article>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Pimpinan | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Pimpinan</h1>
+<div class='grid'>
+  {% for pimpinan in daftar_pimpinan %}
+    {% include 'partials/kartu_pimpinan.html' %}
+  {% empty %}
+    <p>Data pimpinan belum tersedia.</p>
+  {% endfor %}
+</div>
+{% endblock %}
