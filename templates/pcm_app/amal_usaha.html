@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Amal Usaha | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Amal Usaha</h1>
+{% for label, daftar in kelompok %}
+  <h2>{{ label }}</h2>
+  <div class='grid'>
+    {% for usaha in daftar %}
+      <article class='kartu'>
+        {% if usaha.gambar %}<img src='{{ usaha.gambar.url }}' alt='{{ usaha.nama }}'>{% endif %}
+        <div class='kartu-isi'>
+          <h3>{{ usaha.nama }}</h3>
+          <p>{{ usaha.deskripsi }}</p>
+          <small>{{ usaha.alamat }}</small>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% empty %}
+  <p>Data amal usaha belum tersedia.</p>
+{% endfor %}
+{% endblock %}
