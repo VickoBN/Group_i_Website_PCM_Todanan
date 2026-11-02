@@ -1,8 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
-
-from .models import Berita
-
+from django.utils import timezone
+from .models import Agenda, Berita
 
 def berita_list(request):
     paginator = Paginator(Berita.objects.terbit(), 6)
@@ -13,3 +12,11 @@ def berita_detail(request, slug):
     berita = get_object_or_404(Berita.objects.terbit(), slug=slug)
     lainnya = Berita.objects.terbit().exclude(pk=berita.pk)[:3]
     return render(request, 'pcm_app/berita_detail.html', {'berita': berita, 'lainnya': lainnya})
+
+def agenda(request):
+    sekarang = timezone.now()
+    konteks = {
+        'akan_datang': Agenda.objects.filter(waktu_mulai__gte=sekarang),
+        'terlaksana': Agenda.objects.filter(waktu_mulai__lt=sekarang).order_by('-waktu_mulai'),
+    }
+    return render(request, 'pcm_app/agenda.html', konteks)
