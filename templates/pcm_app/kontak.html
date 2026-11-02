@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Kontak | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Kontak</h1>
+<div class='dua-kolom'>
+  <section>
+    <h2>Sekretariat</h2>
+    <p>{{ profil.alamat|default:'Alamat belum tersedia' }}</p>
+    {% if profil.telepon %}<p>Telepon: {{ profil.telepon }}</p>{% endif %}
+    {% if profil.email %}<p>Email: <a href='mailto:{{ profil.email }}'>{{ profil.email }}</a></p>{% endif %}
+  </section>
+  <section>
+    <h2>Kirim pesan</h2>
+    <form method='post'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type='submit' class='tombol'>Kirim</button>
+    </form>
+  </section>
+</div>
+{% endblock %}
