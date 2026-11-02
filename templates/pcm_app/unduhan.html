@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Unduhan | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Unduhan</h1>
+{% for dokumen in daftar_dokumen %}
+  <article class='kartu'>
+    <div class='kartu-isi'>
+      <h3>{{ dokumen.judul }}</h3>
+      <p>{{ dokumen.keterangan }}</p>
+      <small>Tanggal: {{ dokumen.tanggal_unggah|date:'d F Y' }}</small><br>
+      {% if dokumen.berkas %}
+        <a class='tombol' href='{{ dokumen.berkas.url }}' download>Unduh</a>
+      {% elif dokumen.tautan_eksternal %}
+        <a class='tombol' href='{{ dokumen.tautan_eksternal }}' target='_blank' rel='noopener'>Buka dokumen</a>
+      {% endif %}
+    </div>
+  </article>
+{% empty %}
+  <p>Belum ada dokumen.</p>
+{% endfor %}
+{% endblock %}
