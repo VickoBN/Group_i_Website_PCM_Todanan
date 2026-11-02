@@ -3,6 +3,20 @@ from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from .models import Agenda, Berita
 from .models import Berita, Dokumen
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import PesanForm
+
+def kontak(request):
+    if request.method == 'POST':
+        form = PesanForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Terima kasih, pesan Anda sudah terkirim.')
+            return redirect('pcm_app:kontak')
+    else:
+        form = PesanForm()
+    return render(request, 'pcm_app/kontak.html', {'form': form})
 
 def berita_list(request):
     paginator = Paginator(Berita.objects.terbit(), 6)
