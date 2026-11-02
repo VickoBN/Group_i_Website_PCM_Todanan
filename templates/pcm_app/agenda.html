@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Agenda | {{ profil.nama_singkat }}{% endblock %}
+{% block content %}
+<h1>Agenda</h1>
+
+<h2>Akan datang</h2>
+<ul class='daftar-agenda'>
+  {% for item in akan_datang %}
+    <li>
+      <strong>{{ item.nama_kegiatan }}</strong><br>
+      <small>{{ item.waktu_mulai|date:'d F Y' }}{% if item.tempat %} · {{ item.tempat }}{% endif %}</small>
+      {% if item.keterangan %}<p>{{ item.keterangan }}</p>{% endif %}
+    </li>
+  {% empty %}
+    <li>Belum ada agenda mendatang.</li>
+  {% endfor %}
+</ul>
+
+<h2>Sudah terlaksana</h2>
+<ul class='daftar-agenda'>
+  {% for item in terlaksana %}
+    <li>
+      <strong>{{ item.nama_kegiatan }}</strong><br>
+      <small>{{ item.waktu_mulai|date:'d F Y' }}{% if item.tempat %} · {{ item.tempat }}{% endif %}</small>
+    </li>
+  {% empty %}
+    <li>Belum ada agenda yang terlaksana.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

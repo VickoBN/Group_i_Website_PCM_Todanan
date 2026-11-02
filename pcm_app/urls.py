@@ -22,4 +22,5 @@ urlpatterns = [
     path('agenda/', placeholder.sementara, name='agenda'),
     path('unduhan/', placeholder.sementara, name='unduhan'),
     path('kontak/', placeholder.sementara, name='kontak'),
+    path('agenda/', views_konten.agenda, name='agenda')
 ]
