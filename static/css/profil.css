@@ -1,0 +1,37 @@
+/* MISI (di panel hijau) */
+
+.profil-misi-label {
+    margin-top: 26px;
+}
+
+.profil-misi-list {
+    list-style: none;
+    counter-reset: misi;
+    margin: 14px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profil-misi-list li {
+    counter-increment: misi;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.profil-misi-list li::before {
+    content: counter(misi);
+    flex: 0 0 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,.16);
+    font-size: 12px;
+    font-weight: 700;
+}

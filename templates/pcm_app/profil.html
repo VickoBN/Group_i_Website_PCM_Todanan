@@ -1,21 +1,166 @@
 {% extends 'base.html' %}
 {% block title %}Profil | {{ profil.nama_singkat }}{% endblock %}
+
 {% block content %}
-<h1>Profil</h1>
+<div class="beranda">
 
-<h2>Tentang</h2>
-<p>{{ profil.tentang|default:'Belum tersedia.'|linebreaksbr }}</p>
+  <!-- HERO -->
+  <section class="beranda-hero profil-hero">
+    <div class="hero-content">
+      <span class="hero-label">PROFIL ORGANISASI</span>
+      <h1>{{ profil.nama }}</h1>
+      {% if profil.tagline %}<p>{{ profil.tagline }}</p>{% endif %}
+      <a href="#kontak" class="hero-button">
+        <span>Hubungi Sekretariat</span> <span>→</span>
+      </a>
+    </div>
 
-<h2>Sejarah</h2>
-<p>{{ profil.sejarah|default:'Belum tersedia.'|linebreaksbr }}</p>
+    {% if profil.gambar_hero %}
+    <div class="hero-image">
+      <img src="{{ profil.gambar_hero.url }}" alt="{{ profil.nama }}">
+    </div>
+    {% else %}
+    <div class="hero-image profil-visual">
+      <div class="profil-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      {% if profil.tagline %}<span class="profil-visual-tagline">{{ profil.tagline }}</span>{% endif %}
+      <span class="profil-visual-name">{{ profil.nama_singkat }}</span>
+    </div>
+    {% endif %}
+  </section>
 
-<h2>Visi</h2>
-<p>{{ profil.visi|default:'Belum tersedia.'|linebreaksbr }}</p>
+  <!-- RINGKASAN -->
+  <section class="statistik-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">RINGKASAN</span>
+        <h2>Sekilas {{ profil.nama_singkat }}</h2>
+        <p>Identitas singkat organisasi</p>
+      </div>
+    </div>
 
-<h2>Misi</h2>
-{% if profil.daftar_misi %}
-  <ol>{% for misi in profil.daftar_misi %}<li>{{ misi }}</li>{% endfor %}</ol>
-{% else %}
-  <p>Belum tersedia.</p>
-{% endif %}
+    <div class="statistik-grid">
+      <div class="stat-card">
+        <span class="stat-icon">🏷️</span>
+        <strong class="stat-teks">{{ profil.nama_singkat }}</strong>
+        <span>Nama Singkat</span>
+      </div>
+
+      {% if profil.tagline %}
+      <div class="stat-card">
+        <span class="stat-icon">✨</span>
+        <strong class="stat-teks">{{ profil.tagline }}</strong>
+        <span>Tagline</span>
+      </div>
+      {% endif %}
+
+      {% if profil.jumlah_anggota_ktam %}
+      <div class="stat-card">
+        <span class="stat-icon">👥</span>
+        <strong>{{ profil.jumlah_anggota_ktam }}</strong>
+        <span>Anggota ber-KTAM/NBM</span>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  {% if profil.tentang or profil.sejarah or profil.visi or profil.daftar_misi %}
+  <section class="konten-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">TENTANG KAMI</span>
+        <h2>Gerakan, Sejarah &amp; Visi</h2>
+        <p>Landasan dan perjalanan organisasi</p>
+      </div>
+    </div>
+
+    <div class="profil-layout">
+      <div class="profil-kolom">
+        {% if profil.tentang %}
+        <article class="profil-blok">
+          <div class="profil-blok-head">
+            <span class="profil-ikon">🕌</span>
+            <span class="info-label">GERAKAN</span>
+          </div>
+          <h3>Tentang Gerakan</h3>
+          <p>{{ profil.tentang|linebreaksbr }}</p>
+        </article>
+        {% endif %}
+
+        {% if profil.sejarah %}
+        <article class="profil-blok">
+          <div class="profil-blok-head">
+            <span class="profil-ikon">📜</span>
+            <span class="info-label">SEJARAH</span>
+          </div>
+          <h3>Sejarah Berdiri</h3>
+          <p>{{ profil.sejarah|linebreaksbr }}</p>
+        </article>
+        {% endif %}
+      </div>
+
+      {% if profil.visi or profil.daftar_misi %}
+      <aside class="profil-visi">
+        {% if profil.visi %}
+        <span class="profil-visi-label">VISI</span>
+        <span class="profil-visi-quote">“</span>
+        <p>{{ profil.visi|linebreaksbr }}</p>
+        {% endif %}
+
+        {% if profil.daftar_misi %}
+        <span class="profil-visi-label profil-misi-label">MISI</span>
+        <ol class="profil-misi-list">
+          {% for misi in profil.daftar_misi %}
+            <li>{{ misi }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+
+        {% if profil.tagline %}
+        <span class="profil-visi-tag">{{ profil.tagline }}</span>
+        {% endif %}
+      </aside>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- KONTAK -->
+  <section class="konten-section" id="kontak">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">KONTAK</span>
+        <h2>Alamat &amp; Kontak Resmi</h2>
+        <p>Hubungi sekretariat {{ profil.nama_singkat }}</p>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      {% if profil.alamat %}
+      <div class="info-item">
+        <span class="info-icon">📍</span>
+        <span class="info-label">ALAMAT SEKRETARIAT</span>
+        <strong>{{ profil.alamat }}</strong>
+      </div>
+      {% endif %}
+
+      {% if profil.telepon %}
+      <a class="info-item info-link" href="tel:{{ profil.telepon }}">
+        <span class="info-icon">📞</span>
+        <span class="info-label">TELEPON RESMI</span>
+        <strong>{{ profil.telepon }}</strong>
+      </a>
+      {% endif %}
+
+      {% if profil.email %}
+      <a class="info-item info-link" href="mailto:{{ profil.email }}">
+        <span class="info-icon">✉️</span>
+        <span class="info-label">EMAIL RESMI</span>
+        <strong>{{ profil.email }}</strong>
+      </a>
+      {% endif %}
+    </div>
+  </section>
+
+</div>
 {% endblock %}
