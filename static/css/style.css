@@ -1,3 +1,6 @@
+/* ==========================================
+   1. VARIABLE & RESET GLOBAL
+   ========================================== */
 :root {
   --hijau: #00623f;
   --hijau-tua: #004a30;
@@ -12,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--teks);
   line-height: 1.6;
 }
@@ -32,243 +35,9 @@ a {
   padding: 0 16px;
 }
 
-.site-header {
-  background: var(--hijau);
-  color: #fff;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #fff;
-  text-decoration: none;
-}
-
-.brand small {
-  display: block;
-  opacity: 0.85;
-}
-
-.nav {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.nav a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-.menu-toggle,
-.menu-button {
-  display: none;
-}
-
-.alert {
-  padding: 12px 16px;
-  margin: 16px 0;
-  border-radius: 6px;
-  background: #e6f4ec;
-  border: 1px solid var(--hijau);
-}
-
-.site-footer {
-  background: var(--hijau-tua);
-  color: #fff;
-  margin-top: 48px;
-  padding: 24px 0;
-}
-
-.site-footer a {
-  color: var(--kuning);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-}
-
-.footer-note {
-  font-size: 0.85rem;
-  opacity: 0.9;
-  margin-top: 16px;
-}
-
-@media (max-width: 768px) {
-  .header-inner {
-    flex-wrap: wrap;
-  }
-
-  .menu-button {
-    display: block;
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-
-  .nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    padding: 8px 0;
-  }
-
-  .menu-toggle:checked~.nav {
-    display: flex;
-  }
-}
-
-.hero {
-  min-height: 260px;
-  display: flex;
-  align-items: center;
-  background: var(--hijau) center / cover no-repeat;
-  color: #fff;
-  margin: 0 -16px;
-  padding: 32px 16px;
-}
-
-.hero-isi h1 {
-  margin: 0 0 8px;
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-}
-
-.statistik {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
-  margin: 24px 0;
-}
-
-.stat {
-  background: var(--abu);
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-}
-
-.stat strong {
-  display: block;
-  font-size: 2rem;
-  color: var(--hijau);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.kartu {
-  border: 1px solid #dde3e0;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-}
-
-.kartu img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-.kartu-isi {
-  padding: 12px 16px;
-}
-
-.kartu-isi h3 {
-  margin: 4px 0;
-}
-
-.foto-kosong {
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--abu);
-  color: #6b7a72;
-}
-
-.tabel-scroll {
-  overflow-x: auto;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  border: 1px solid #dde3e0;
-  padding: 8px 12px;
-  text-align: left;
-}
-
-th {
-  background: var(--abu);
-}
-
-.daftar-agenda {
-  padding-left: 20px;
-}
-
-.tombol {
-  display: inline-block;
-  background: var(--hijau);
-  color: #fff;
-  padding: 8px 16px;
-  border: 0;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.paginasi {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  margin: 24px 0;
-}
-
-.dua-kolom {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-}
-
-form p {
-  margin: 0 0 12px;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 8px;
-  font: inherit;
-}
-
-
-/* ==============================
-   NAVBAR REDESIGN
-============================== */
-
+/* ==========================================
+   2. NAVBAR REDESIGN
+   ========================================== */
 .site-header {
   width: 100%;
   background: #fff;
@@ -290,7 +59,6 @@ form textarea {
 }
 
 /* LOGO */
-
 .brand {
   display: flex;
   align-items: center;
@@ -300,9 +68,11 @@ form textarea {
   width: fit-content;
 }
 
-.brand svg {
+.brand svg,
+.brand img {
   width: 34px !important;
   height: auto !important;
+  object-fit: contain;
 }
 
 .brand strong {
@@ -312,7 +82,6 @@ form textarea {
 }
 
 /* NAVIGATION PILL */
-
 .nav {
   display: flex;
   align-items: center;
@@ -362,7 +131,6 @@ form textarea {
 }
 
 /* CTA BUTTON */
-
 .header-cta {
   justify-self: end;
   display: inline-flex;
@@ -389,17 +157,12 @@ form textarea {
   font-size: 15px;
 }
 
-/* MOBILE TOGGLE */
-
+/* RESPONSIVE NAVBAR (TABLET & MOBILE) */
 .menu-toggle,
 .menu-button,
 .mobile-cta {
   display: none;
 }
-
-/* ==============================
-   TABLET
-============================== */
 
 @media (max-width: 1100px) {
   .header-inner {
@@ -449,7 +212,7 @@ form textarea {
     display: none;
   }
 
-  .menu-toggle:checked~.nav {
+  .menu-toggle:checked ~ .nav {
     display: flex;
   }
 
@@ -471,18 +234,14 @@ form textarea {
   }
 }
 
-/* ==============================
-   MOBILE
-============================== */
-
 @media (max-width: 480px) {
   .site-header {
     padding: 12px 5%;
   }
 
+  .brand svg,
   .brand img {
-    width: 30px;
-    height: 36px;
+    width: 30px !important;
   }
 
   .brand strong {
@@ -494,33 +253,119 @@ form textarea {
   }
 }
 
-/* ==============================
-   FOOTER RESPONSIVE (TAMBAHAN)
-============================== */
-
-@media (max-width: 768px) {
-  .site-footer {
-    padding: 30px 16px 20px;
-    margin: 30px auto 20px;
-    width: calc(100% - 24px);
-  }
-
-  .footer-top-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding-bottom: 25px;
-  }
-
-  .footer-bottom-flex {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
+/* ==========================================
+   3. KOMPONEN UI UMUM (Form, Kartu, Tabel, Paginasi)
+   ========================================== */
+.alert {
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+  background: #e6f4ec;
+  border: 1px solid var(--hijau);
 }
 
-/* ==============================
-   FOOTER (DESKTOP & BASE)
-============================== */
+.tombol {
+  display: inline-block;
+  background: var(--hijau);
+  color: #fff;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.paginasi {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.tabel-scroll {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #dde3e0;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background: var(--abu);
+}
+
+.dua-kolom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+form p {
+  margin: 0 0 12px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  font: inherit;
+  border: 1px solid #dde3e0;
+  border-radius: 4px;
+}
+
+/* Grid & Kartu Umum (dipakai di Berita List, Amal Usaha, Pimpinan) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.kartu {
+  border: 1px solid #dde3e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.kartu img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.kartu-isi {
+  padding: 12px 16px;
+}
+
+.kartu-isi h3 {
+  margin: 4px 0;
+}
+
+.foto-kosong {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--abu);
+  color: #6b7a72;
+}
+
+.daftar-agenda {
+  padding-left: 20px;
+}
+
+/* ==========================================
+   4. FOOTER REDESIGN GLOBAL
+   ========================================== */
 .site-footer {
   background: #07583e;
   color: #ffffff;
@@ -564,7 +409,6 @@ form textarea {
   padding: 10px 15px;
   border-radius: 8px;
   color: #333;
-  /* Diubah jadi gelap agar terlihat di atas background putih */
   outline: none;
 }
 
@@ -644,21 +488,13 @@ form textarea {
   background: #edecec;
 }
 
-
-/* ==============================
-   RESPONSIVE (TABLET & MOBILE)
-============================== */
-
-/* Tablet (Layardari 992px ke bawah) */
 @media (max-width: 992px) {
   .footer-top-grid {
     grid-template-columns: repeat(2, 1fr);
-    /* Berubah jadi 2 kolom */
     gap: 30px;
   }
 }
 
-/* Mobile / HP (Layar dari 768px ke bawah) */
 @media (max-width: 768px) {
   .site-footer {
     padding: 30px 16px 20px;
@@ -669,7 +505,6 @@ form textarea {
 
   .footer-top-grid {
     grid-template-columns: 1fr;
-    /* Berubah jadi 1 kolom ke bawah secara rapi */
     gap: 25px;
     padding-bottom: 25px;
   }
@@ -680,7 +515,6 @@ form textarea {
 
   .footer-bottom-flex {
     flex-direction: column;
-    /* Menyusun ke bawah di layar HP */
     gap: 15px;
     text-align: center;
   }
