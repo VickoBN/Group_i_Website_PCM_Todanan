@@ -1,24 +1,61 @@
 <footer class='site-footer'>
-  <div class='container footer-grid'>
-    <div>
-      <h3>{{ profil.nama|default:'PCM Todanan' }}</h3>
-      <p>{{ profil.alamat|default:'Alamat belum tersedia' }}</p>
-      {% if profil.telepon %}<p>Telepon: {{ profil.telepon }}</p>{% endif %}
-      {% if profil.email %}<p>Email: {{ profil.email }}</p>{% endif %}
+  <div class='container footer-top-grid'>
+    <!-- Kolom Kiri: Nama & Info Newsletter -->
+    <div class='footer-brand-col'>
+      <div class='footer-logo-area'>
+        <h3>PCM Todanan</h3>
+      </div>
+      <p class='footer-desc'>Dapatkan informasi dan kegiatan terbaru dari Pimpinan Cabang Muhammadiyah Todanan.</p>
+      
+      <!-- Form Newsletter -->
+      <form class='footer-newsletter-form' onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Kirim</button>
+      </form>
     </div>
-    <div>
-      <h3>Tautan Persyarikatan</h3>
+
+    <!-- Kolom Kanan 1: Tautan Persyarikatan -->
+    <div class='footer-links-col'>
+      <h4>Tautan Persyarikatan</h4>
       <ul>
-        {% for tautan in tautan_list %}
-          <li><a href='{{ tautan.url }}' target='_blank' rel='noopener'>{{ tautan.nama }}</a></li>
-        {% empty %}
-          <li>Belum ada tautan.</li>
-        {% endfor %}
+        <li><a href='https://muhammadiyah.or.id' target='_blank' rel='noopener'>Pusat Muhammadiyah</a></li>
+        <li><a href='https://pwmuateng.or.id' target='_blank' rel='noopener'>PW Muhammadiyah Jateng</a></li>
+        <li><a href='#' target='_blank' rel='noopener'>PD Muhammadiyah Blora</a></li>
+      </ul>
+    </div>
+
+    <!-- Kolom Kanan 2: Kontak & Alamat -->
+    <div class='footer-links-col'>
+      <h4>Kontak & Alamat</h4>
+      <ul>
+        <li><p>Jl. Raya Todanan - Kunduran Km. 02, Todanan, Blora, Jawa Tengah</p></li>
+        <li><p>Telepon: +62 812-3456-7890</p></li>
+        <li><p>Email: pcm.todanan@gmail.com</p></li>
+      </ul>
+    </div>
+
+    <!-- Kolom Kanan 3: Informasi Tugas -->
+    <div class='footer-links-col'>
+      <h4>Informasi</h4>
+      <ul>
+        <li><p style="font-size: 12px; line-height: 1.5; color: #a0aec0;">Website ini dibuat informasi PCM Todanan</p></li>
       </ul>
     </div>
   </div>
-  <div class='container footer-note'>
-    <p>Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework, bukan website resmi PCM Todanan.</p>
-    <p>Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis, via Wikimedia Commons, lisensi CC BY-SA 4.0. Sumber data dan foto lain tercantum di README repo.</p>
+
+  <!-- Bagian Bawah: Copyright & Sosial Media -->
+  <div class='container footer-bottom-flex'>
+    <div class='footer-lang'>
+      <span>🌐 Indonesia (ID)</span>
+    </div>
+    <div class='footer-copyright'>
+      <p>&copy; 2026 PCM Todanan. All rights reserved.</p>
+    </div>
+    <div class='footer-socials'>
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="Instagram">ig</a>
+    </div>
   </div>
 </footer>
