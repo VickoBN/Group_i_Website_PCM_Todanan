@@ -1,30 +1,83 @@
 {% extends 'base.html' %}
-{% block title %}Agenda | {{ profil.nama_singkat }}{% endblock %}
+{% block title %}Agenda | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
 {% block content %}
-<h1>Agenda</h1>
+<div class="beranda">
 
-<h2>Akan datang</h2>
-<ul class='daftar-agenda'>
-  {% for item in akan_datang %}
-    <li>
-      <strong>{{ item.nama_kegiatan }}</strong><br>
-      <small>{{ item.waktu_mulai|date:'d F Y' }}{% if item.tempat %} · {{ item.tempat }}{% endif %}</small>
-      {% if item.keterangan %}<p>{{ item.keterangan }}</p>{% endif %}
-    </li>
-  {% empty %}
-    <li>Belum ada agenda mendatang.</li>
-  {% endfor %}
-</ul>
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">AGENDA</span>
+      <h1>Agenda Kegiatan PCM Todanan</h1>
+      <p>Jadwal kegiatan dan acara Muhammadiyah di Todanan, baik yang akan datang maupun yang sudah terlaksana.</p>
+      <a href="#akan-datang" class="hero-button"><span>Lihat Jadwal</span> <span>→</span></a>
+    </div>
+    <div class="hero-image pg-visual">
+      <div class="pg-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      <strong class="pg-visual-angka">{{ akan_datang|length }}</strong>
+      <span class="pg-visual-name">Agenda Mendatang</span>
+    </div>
+  </section>
 
-<h2>Sudah terlaksana</h2>
-<ul class='daftar-agenda'>
-  {% for item in terlaksana %}
-    <li>
-      <strong>{{ item.nama_kegiatan }}</strong><br>
-      <small>{{ item.waktu_mulai|date:'d F Y' }}{% if item.tempat %} · {{ item.tempat }}{% endif %}</small>
-    </li>
-  {% empty %}
-    <li>Belum ada agenda yang terlaksana.</li>
-  {% endfor %}
-</ul>
+  <section class="konten-section" id="akan-datang">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">AKAN DATANG</span>
+        <h2>Agenda Mendatang</h2>
+        <p>Kegiatan yang akan segera dilaksanakan</p>
+      </div>
+    </div>
+
+    <div class="ag-list">
+      {% for item in akan_datang %}
+      <article class="ag-item">
+        <div class="ag-tanggal">
+          <strong>{{ item.waktu_mulai|date:'d' }}</strong>
+          <span>{{ item.waktu_mulai|date:'M Y' }}</span>
+        </div>
+        <div class="ag-info">
+          <h3>{{ item.nama_kegiatan }}</h3>
+          <ul class="ag-meta">
+            <li>🗓 {{ item.waktu_mulai|date:'l, d F Y' }}</li>
+            {% if item.tempat %}<li>📍 {{ item.tempat }}</li>{% endif %}
+          </ul>
+          {% if item.keterangan %}<p>{{ item.keterangan }}</p>{% endif %}
+        </div>
+      </article>
+      {% empty %}
+      <div class="empty-state">Belum ada agenda mendatang.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="konten-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">ARSIP</span>
+        <h2>Sudah Terlaksana</h2>
+        <p>Kegiatan yang telah berlangsung</p>
+      </div>
+    </div>
+
+    <div class="ag-list">
+      {% for item in terlaksana %}
+      <article class="ag-item ag-selesai">
+        <div class="ag-tanggal">
+          <strong>{{ item.waktu_mulai|date:'d' }}</strong>
+          <span>{{ item.waktu_mulai|date:'M Y' }}</span>
+        </div>
+        <div class="ag-info">
+          <h3>{{ item.nama_kegiatan }}</h3>
+          <ul class="ag-meta">
+            <li>🗓 {{ item.waktu_mulai|date:'d F Y' }}</li>
+            {% if item.tempat %}<li>📍 {{ item.tempat }}</li>{% endif %}
+          </ul>
+        </div>
+      </article>
+      {% empty %}
+      <div class="empty-state">Belum ada agenda yang terlaksana.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+</div>
 {% endblock %}

@@ -37,17 +37,15 @@
       {% for a in amal_usaha %}
       <article class="amal-card">
         <div class="amal-foto">
-          {% if a.foto %}
-            <img src="{{ a.foto.url }}" alt="{{ a.nama }}">
+          {% if a.gambar %}
+            <img src="{{ a.gambar.url }}" alt="{{ a.nama }}">
           {% else %}
             <span>{{ a.nama|slice:":1" }}</span>
           {% endif %}
         </div>
 
         <div class="amal-body">
-          {% if a.kategori %}
-            <span class="amal-chip">{{ a.kategori }}</span>
-          {% endif %}
+          <span class="amal-chip">{{ a.get_bidang_display }}</span>
 
           <h3>{{ a.nama }}</h3>
 
@@ -55,21 +53,14 @@
             <p class="amal-deskripsi">{{ a.deskripsi|truncatewords:30 }}</p>
           {% endif %}
 
+          {% if a.alamat %}
           <ul class="amal-info">
-            {% if a.alamat %}
             <li>
               <span class="amal-ikon">📍</span>
               <span>{{ a.alamat }}</span>
             </li>
-            {% endif %}
-
-            {% if a.telepon %}
-            <li>
-              <span class="amal-ikon">📞</span>
-              <a href="tel:{{ a.telepon }}">{{ a.telepon }}</a>
-            </li>
-            {% endif %}
           </ul>
+          {% endif %}
         </div>
       </article>
       {% empty %}

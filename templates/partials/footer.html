@@ -14,34 +14,32 @@
       </form>
     </div>
 
-    <!-- Kolom Kanan 1: Tautan Persyarikatan -->
-    <div class='footer-links-col'>
+        <div class='footer-links-col'>
       <h4>Tautan Persyarikatan</h4>
       <ul>
-        <li><a href='https://muhammadiyah.or.id' target='_blank' rel='noopener'>Pusat Muhammadiyah</a></li>
-        <li><a href='https://pwmuateng.or.id' target='_blank' rel='noopener'>PW Muhammadiyah Jateng</a></li>
-        <li><a href='#' target='_blank' rel='noopener'>PD Muhammadiyah Blora</a></li>
+        {% for t in tautan_list %}
+          <li><a href='{{ t.url }}' target='_blank' rel='noopener'>{{ t.nama }}</a></li>
+        {% empty %}
+          <li><a href='https://muhammadiyah.or.id' target='_blank' rel='noopener'>Pusat Muhammadiyah</a></li>
+        {% endfor %}
       </ul>
     </div>
 
-    <!-- Kolom Kanan 2: Kontak & Alamat -->
     <div class='footer-links-col'>
-      <h4>Kontak & Alamat</h4>
+      <h4>Kontak &amp; Alamat</h4>
       <ul>
-        <li><p>Jl. Raya Todanan - Kunduran Km. 02, Todanan, Blora, Jawa Tengah</p></li>
-        <li><p>Telepon: +62 812-3456-7890</p></li>
-        <li><p>Email: pcm.todanan@gmail.com</p></li>
+        {% if profil.alamat %}<li><p>{{ profil.alamat }}</p></li>{% endif %}
+        {% if profil.telepon %}<li><p>Telepon: <a href='tel:{{ profil.telepon }}'>{{ profil.telepon }}</a></p></li>{% endif %}
+        {% if profil.email %}<li><p>Email: <a href='mailto:{{ profil.email }}'>{{ profil.email }}</a></p></li>{% endif %}
       </ul>
     </div>
 
-    <!-- Kolom Kanan 3: Informasi Tugas -->
     <div class='footer-links-col'>
       <h4>Informasi</h4>
       <ul>
-        <li><p style="font-size: 12px; line-height: 1.5; color: #a0aec0;">Website ini dibuat informasi PCM Todanan</p></li>
+        <li><p style="font-size: 12px; line-height: 1.5; color: #a0aec0;">Website informasi resmi {{ profil.nama_singkat|default:'PCM Todanan' }}.</p></li>
       </ul>
     </div>
-  </div>
 
   <!-- Bagian Bawah: Copyright & Sosial Media -->
   <div class='container footer-bottom-flex'>

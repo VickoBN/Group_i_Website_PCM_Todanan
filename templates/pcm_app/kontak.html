@@ -1,21 +1,72 @@
 {% extends 'base.html' %}
-{% block title %}Kontak | {{ profil.nama_singkat }}{% endblock %}
+{% block title %}Kontak | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
 {% block content %}
-<h1>Kontak</h1>
-<div class='dua-kolom'>
-  <section>
-    <h2>Sekretariat</h2>
-    <p>{{ profil.alamat|default:'Alamat belum tersedia' }}</p>
-    {% if profil.telepon %}<p>Telepon: {{ profil.telepon }}</p>{% endif %}
-    {% if profil.email %}<p>Email: <a href='mailto:{{ profil.email }}'>{{ profil.email }}</a></p>{% endif %}
+<div class="beranda">
+
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">KONTAK</span>
+      <h1>Hubungi {{ profil.nama_singkat|default:'PCM Todanan' }}</h1>
+      <p>Punya pertanyaan, saran, atau ingin berkoordinasi? Kirim pesan kepada sekretariat kami.</p>
+      <a href="#form-pesan" class="hero-button"><span>Kirim Pesan</span> <span>→</span></a>
+    </div>
+    <div class="hero-image pg-visual">
+      <div class="pg-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      <strong class="pg-visual-angka">✉</strong>
+      <span class="pg-visual-name">Hubungi Kami</span>
+    </div>
   </section>
-  <section>
-    <h2>Kirim pesan</h2>
-    <form method='post'>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type='submit' class='tombol'>Kirim</button>
-    </form>
+
+  <section class="konten-section">
+    <div class="kt-layout">
+
+      <div class="kt-info">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">SEKRETARIAT</span>
+            <h2>Alamat &amp; Kontak</h2>
+          </div>
+        </div>
+
+        {% if profil.alamat %}
+        <div class="kt-kartu">
+          <span class="kt-ikon">📍</span>
+          <div><span class="kt-label">ALAMAT</span><strong>{{ profil.alamat }}</strong></div>
+        </div>
+        {% endif %}
+
+        {% if profil.telepon %}
+        <a class="kt-kartu kt-link" href="tel:{{ profil.telepon }}">
+          <span class="kt-ikon">📞</span>
+          <div><span class="kt-label">TELEPON</span><strong>{{ profil.telepon }}</strong></div>
+        </a>
+        {% endif %}
+
+        {% if profil.email %}
+        <a class="kt-kartu kt-link" href="mailto:{{ profil.email }}">
+          <span class="kt-ikon">✉️</span>
+          <div><span class="kt-label">EMAIL</span><strong>{{ profil.email }}</strong></div>
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="kt-form" id="form-pesan">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">FORMULIR</span>
+            <h2>Kirim Pesan</h2>
+          </div>
+        </div>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="ud-tombol">Kirim Pesan <span>→</span></button>
+        </form>
+      </div>
+
+    </div>
   </section>
+
 </div>
 {% endblock %}

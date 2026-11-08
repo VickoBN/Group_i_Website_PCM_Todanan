@@ -1,41 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/beranda.css' %}">
-{% endblock %}
-
 {% block content %}
-<main class="beranda">
+<div class="beranda">
 
     <!-- HERO SECTION -->
     <section class="beranda-hero">
-
         <div class="hero-content">
             <span class="hero-label">PIMPINAN CABANG MUHAMMADIYAH</span>
-
-            <h1>
-                {{ profil.nama|default:'PCM Todanan' }}
-            </h1>
-
-            <p>
-                {{ profil.tagline|default:'Bersama membangun umat, memperkuat persyarikatan, dan memberikan manfaat bagi masyarakat.' }}
-            </p>
-
+            <h1>{{ profil.nama|default:'PCM Todanan' }}</h1>
+            <p>{{ profil.tagline|default:'Bersama membangun umat, memperkuat persyarikatan, dan memberikan manfaat bagi masyarakat.' }}</p>
             <a href="#statistik" class="hero-button">
                 Jelajahi Lebih Lanjut <span>↗</span>
             </a>
         </div>
 
         <div class="hero-image">
-    <img src="{% static 'img/beranda.jpg' %}" alt="Deskripsi Gambar">
-</div>
+            <img src="{% static 'img/beranda.jpg' %}" alt="Kegiatan {{ profil.nama_singkat|default:'PCM Todanan' }}">
+        </div>
     </section>
-
 
     <!-- STATISTIK -->
     <section class="statistik-section" id="statistik">
-
         <div class="section-heading">
             <div>
                 <span class="section-label">DATA PERSYARIKATAN</span>
@@ -44,33 +30,26 @@
         </div>
 
         <div class="statistik-grid">
-
             <div class="stat-card">
                 <div class="stat-icon">✦</div>
                 <strong>{{ jumlah_ranting|default:0 }}</strong>
                 <span>Jumlah Ranting</span>
             </div>
-
             <div class="stat-card">
                 <div class="stat-icon">▦</div>
                 <strong>{{ jumlah_amal_usaha|default:0 }}</strong>
                 <span>Amal Usaha</span>
             </div>
-
             <div class="stat-card">
                 <div class="stat-icon">♙</div>
                 <strong>{{ profil.jumlah_anggota_ktam|default:0 }}</strong>
                 <span>Anggota ber-KTAM</span>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- BERITA TERBARU -->
     <section class="konten-section" id="berita">
-
         <div class="section-heading">
             <div>
                 <span class="section-label">INFORMASI TERKINI</span>
@@ -79,30 +58,17 @@
             </div>
         </div>
 
-        <div class="berita-grid">
-
+        <div class="bt-grid">
             {% for berita in berita_terbaru|slice:":3" %}
-
-                <div class="berita-card">
-                    {% include 'pcm_app/partials/kartu_berita.html' %}
-                </div>
-
+                {% include 'pcm_app/partials/kartu_berita.html' %}
             {% empty %}
-
-                <div class="empty-state">
-                    Belum ada berita terbaru.
-                </div>
-
+                <div class="empty-state">Belum ada berita terbaru.</div>
             {% endfor %}
-
         </div>
-
     </section>
-
 
     <!-- AGENDA MENDATANG -->
     <section class="konten-section agenda-section" id="agenda">
-
         <div class="section-heading">
             <div>
                 <span class="section-label">JADWAL KEGIATAN</span>
@@ -112,40 +78,21 @@
         </div>
 
         <div class="agenda-grid">
-
             {% for agenda in agenda_mendatang|slice:":3" %}
-
                 <article class="agenda-card">
-
                     <div class="agenda-icon">▦</div>
-
                     <div class="agenda-info">
-                        <span class="agenda-date">
-                            {{ agenda.waktu_mulai|date:'d F Y' }}
-                        </span>
-
+                        <span class="agenda-date">{{ agenda.waktu_mulai|date:'d F Y' }}</span>
                         <h3>{{ agenda.nama_kegiatan }}</h3>
-
-                        {% if agenda.tempat %}
-                            <p>⌖ {{ agenda.tempat }}</p>
-                        {% endif %}
+                        {% if agenda.tempat %}<p>⌖ {{ agenda.tempat }}</p>{% endif %}
                     </div>
-
                     <span class="agenda-arrow">↗</span>
-
                 </article>
-
             {% empty %}
-
-                <div class="empty-state">
-                    Belum ada agenda mendatang.
-                </div>
-
+                <div class="empty-state">Belum ada agenda mendatang.</div>
             {% endfor %}
-
         </div>
-
     </section>
 
-</main>
+</div>
 {% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}{% if berita %}{{ berita.judul }}{% else %}Berita{% endif %} | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
+{% block content %}
+<div class="beranda">
+
+{% if berita %}
+  <article class="bt-artikel">
+    <a class="bt-kembali" href="{% url 'pcm_app:berita_list' %}">← Kembali ke Berita</a>
+
+    <header class="bt-artikel-head">
+      <span class="hero-label">BERITA · {{ berita.tanggal_terbit|date:'d F Y'|upper }}</span>
+      <h1>{{ berita.judul }}</h1>
+      {% if berita.ringkasan %}<p class="bt-lead">{{ berita.ringkasan }}</p>{% endif %}
+    </header>
+
+    {% if berita.gambar_sampul %}
+    <div class="bt-sampul"><img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}"></div>
+    {% endif %}
+
+    <div class="bt-isi">{{ berita.isi|linebreaks }}</div>
+
+    {% if berita.sumber_url %}
+    <a class="hero-button bt-sumber" href="{{ berita.sumber_url }}" target="_blank" rel="noopener">
+      <span>Baca di sumber asli</span> <span>↗</span>
+    </a>
+    {% endif %}
+  </article>
+{% else %}
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">BERITA</span>
+      <h1>Kabar Terbaru PCM Todanan</h1>
+      <p>Informasi kegiatan, pemberitaan, dan perkembangan terbaru dari Pimpinan Cabang Muhammadiyah Todanan.</p>
+      <a href="#daftar" class="hero-button"><span>Lihat Berita</span> <span>→</span></a>
+    </div>
+    <div class="hero-image pg-visual">
+      <div class="pg-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      <strong class="pg-visual-angka">{{ halaman.paginator.count }}</strong>
+      <span class="pg-visual-name">Berita</span>
+    </div>
+  </section>
+{% endif %}
+
+  {% if daftar or not berita %}
+  <section class="konten-section" id="daftar">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">{% if berita %}LAINNYA{% else %}SEMUA BERITA{% endif %}</span>
+        <h2>{% if berita %}Berita Lainnya{% else %}Berita &amp; Pemberitaan{% endif %}</h2>
+      </div>
+    </div>
+
+    <div class="bt-grid">
+      {% for berita in daftar %}
+        {% include 'pcm_app/partials/kartu_berita.html' %}
+      {% empty %}
+        <div class="empty-state">Belum ada berita.</div>
+      {% endfor %}
+    </div>
+
+    {% if halaman.has_other_pages %}
+    <nav class="bt-paginasi">
+      {% if halaman.has_previous %}<a href="?page={{ halaman.previous_page_number }}#daftar">&laquo; Sebelumnya</a>{% endif %}
+      <span>Halaman {{ halaman.number }} dari {{ halaman.paginator.num_pages }}</span>
+      {% if halaman.has_next %}<a href="?page={{ halaman.next_page_number }}#daftar">Berikutnya &raquo;</a>{% endif %}
+    </nav>
+    {% endif %}
+  </section>
+  {% endif %}
+
+</div>
+{% endblock %}

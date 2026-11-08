@@ -1,21 +1,52 @@
 {% extends 'base.html' %}
-{% block title %}Unduhan | {{ profil.nama_singkat }}{% endblock %}
+{% block title %}Unduhan | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
 {% block content %}
-<h1>Unduhan</h1>
-{% for dokumen in daftar_dokumen %}
-  <article class='kartu'>
-    <div class='kartu-isi'>
-      <h3>{{ dokumen.judul }}</h3>
-      <p>{{ dokumen.keterangan }}</p>
-      <small>Tanggal: {{ dokumen.tanggal_unggah|date:'d F Y' }}</small><br>
-      {% if dokumen.berkas %}
-        <a class='tombol' href='{{ dokumen.berkas.url }}' download>Unduh</a>
-      {% elif dokumen.tautan_eksternal %}
-        <a class='tombol' href='{{ dokumen.tautan_eksternal }}' target='_blank' rel='noopener'>Buka dokumen</a>
-      {% endif %}
+<div class="beranda">
+
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">UNDUHAN</span>
+      <h1>Dokumen &amp; Arsip PCM Todanan</h1>
+      <p>Kumpulan dokumen resmi, panduan, dan surat keputusan yang dapat diakses dan diunduh oleh warga persyarikatan.</p>
+      <a href="#dokumen" class="hero-button"><span>Lihat Dokumen</span> <span>→</span></a>
     </div>
-  </article>
-{% empty %}
-  <p>Belum ada dokumen.</p>
-{% endfor %}
+    <div class="hero-image pg-visual">
+      <div class="pg-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      <strong class="pg-visual-angka">{{ daftar_dokumen|length }}</strong>
+      <span class="pg-visual-name">Dokumen</span>
+    </div>
+  </section>
+
+  <section class="konten-section" id="dokumen">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">DAFTAR DOKUMEN</span>
+        <h2>Pusat Unduhan</h2>
+        <p>Diurutkan dari dokumen terbaru</p>
+      </div>
+    </div>
+
+    <div class="ud-list">
+      {% for dokumen in daftar_dokumen %}
+      <article class="ud-item">
+        <div class="ud-ikon">{% if dokumen.berkas %}📄{% else %}🔗{% endif %}</div>
+        <div class="ud-info">
+          <h3>{{ dokumen.judul }}</h3>
+          {% if dokumen.keterangan %}<p>{{ dokumen.keterangan }}</p>{% endif %}
+          <span class="ud-tanggal">Diunggah {{ dokumen.tanggal_unggah|date:'d F Y' }}</span>
+        </div>
+        {% if dokumen.berkas %}
+          <a class="ud-tombol" href="{{ dokumen.berkas.url }}" download>Unduh ↓</a>
+        {% elif dokumen.tautan_eksternal %}
+          <a class="ud-tombol" href="{{ dokumen.tautan_eksternal }}" target="_blank" rel="noopener">Buka ↗</a>
+        {% endif %}
+      </article>
+      {% empty %}
+      <div class="empty-state">Belum ada dokumen.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+</div>
 {% endblock %}
