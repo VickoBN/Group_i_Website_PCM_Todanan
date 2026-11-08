@@ -1,0 +1,190 @@
+/* ==========================================
+   AMAL USAHA PCM TODANAN (mandiri)
+   ========================================== */
+
+/* HERO: panel hijau */
+
+.amal-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    text-align: center;
+    color: #fff;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.14), transparent 45%),
+        linear-gradient(135deg, #0a6b4c, #07583e 60%, #054330);
+}
+
+.amal-visual-logo {
+    width: 92px;
+    height: 92px;
+    padding: 14px;
+    border-radius: 24px;
+    background: #fff;
+    display: grid;
+    place-items: center;
+}
+
+.amal-visual-logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.amal-visual-angka {
+    font-size: 46px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+}
+
+.amal-visual-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    opacity: .75;
+    text-transform: uppercase;
+}
+
+/* KARTU */
+
+.amal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.amal-card {
+    background: #f4f5f7;
+    padding: 12px 12px 22px;
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    transition: .3s;
+}
+
+.amal-card:hover {
+    transform: translateY(-4px);
+    background: #eceef2;
+}
+
+.amal-foto {
+    width: 100%;
+    height: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #dce2e8, #aeb9c6);
+    color: #394354;
+    font-size: 54px;
+    font-weight: 700;
+}
+
+.amal-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.amal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 10px;
+    min-width: 0;
+}
+
+.amal-chip {
+    padding: 6px 12px;
+    border-radius: 30px;
+    background: #07583e;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.amal-body h3 {
+    font-size: 18px;
+    letter-spacing: -0.4px;
+    line-height: 1.35;
+    margin: 0;
+    color: #20232b;
+    overflow-wrap: anywhere;
+}
+
+.amal-deskripsi {
+    font-size: 13px;
+    line-height: 1.75;
+    color: #737987;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.amal-info {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 14px 0 0;
+    border-top: 1px solid #e0e3e8;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.amal-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #20232b;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.amal-ikon {
+    flex: 0 0 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: #fff;
+    font-size: 14px;
+}
+
+.amal-info a {
+    color: #07583e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.amal-info a:hover {
+    text-decoration: underline;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .amal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .amal-visual { padding: 20px; }
+    .amal-visual-logo { width: 76px; height: 76px; }
+    .amal-visual-angka { font-size: 38px; }
+
+    .amal-grid { grid-template-columns: 1fr; gap: 12px; }
+    .amal-card { border-radius: 20px; }
+    .amal-foto { height: 160px; }
+    .amal-body h3 { font-size: 16px; }
+}

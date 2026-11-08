@@ -1,22 +1,82 @@
 {% extends 'base.html' %}
-{% block title %}Amal Usaha | {{ profil.nama_singkat }}{% endblock %}
+{% block title %}Amal Usaha | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
 {% block content %}
-<h1>Amal Usaha</h1>
-{% for label, daftar in kelompok %}
-  <h2>{{ label }}</h2>
-  <div class='grid'>
-    {% for usaha in daftar %}
-      <article class='kartu'>
-        {% if usaha.gambar %}<img src='{{ usaha.gambar.url }}' alt='{{ usaha.nama }}'>{% endif %}
-        <div class='kartu-isi'>
-          <h3>{{ usaha.nama }}</h3>
-          <p>{{ usaha.deskripsi }}</p>
-          <small>{{ usaha.alamat }}</small>
+<div class="beranda">
+
+  <!-- HERO -->
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">AMAL USAHA</span>
+      <h1>Amal Usaha Muhammadiyah di Todanan</h1>
+      <p>Lembaga pendidikan, kesehatan, sosial, dan ekonomi yang dikelola
+        {{ profil.nama_singkat|default:'PCM Todanan' }} untuk melayani masyarakat.</p>
+      <a href="#daftar" class="hero-button">
+        <span>Lihat Daftar</span> <span>→</span>
+      </a>
+    </div>
+
+    <div class="hero-image amal-visual">
+      <div class="amal-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      <strong class="amal-visual-angka">{{ amal_usaha|length }}</strong>
+      <span class="amal-visual-name">Amal Usaha</span>
+    </div>
+  </section>
+
+  <!-- DAFTAR AMAL USAHA -->
+  <section class="konten-section" id="daftar">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">DAFTAR AMAL USAHA</span>
+        <h2>Lembaga &amp; Layanan</h2>
+        <p>Amal usaha yang berada di bawah naungan cabang</p>
+      </div>
+    </div>
+
+    <div class="amal-grid">
+      {% for a in amal_usaha %}
+      <article class="amal-card">
+        <div class="amal-foto">
+          {% if a.foto %}
+            <img src="{{ a.foto.url }}" alt="{{ a.nama }}">
+          {% else %}
+            <span>{{ a.nama|slice:":1" }}</span>
+          {% endif %}
+        </div>
+
+        <div class="amal-body">
+          {% if a.kategori %}
+            <span class="amal-chip">{{ a.kategori }}</span>
+          {% endif %}
+
+          <h3>{{ a.nama }}</h3>
+
+          {% if a.deskripsi %}
+            <p class="amal-deskripsi">{{ a.deskripsi|truncatewords:30 }}</p>
+          {% endif %}
+
+          <ul class="amal-info">
+            {% if a.alamat %}
+            <li>
+              <span class="amal-ikon">📍</span>
+              <span>{{ a.alamat }}</span>
+            </li>
+            {% endif %}
+
+            {% if a.telepon %}
+            <li>
+              <span class="amal-ikon">📞</span>
+              <a href="tel:{{ a.telepon }}">{{ a.telepon }}</a>
+            </li>
+            {% endif %}
+          </ul>
         </div>
       </article>
-    {% endfor %}
-  </div>
-{% empty %}
-  <p>Data amal usaha belum tersedia.</p>
-{% endfor %}
+      {% empty %}
+      <div class="empty-state">Data amal usaha belum tersedia.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+</div>
 {% endblock %}
