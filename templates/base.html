@@ -14,7 +14,7 @@
 
     <!-- Logo -->
     <a class="brand" href="{% url 'pcm_app:beranda' %}">
-      <img src="{% static 'img/muhammadiyah.svg' %}" alt="Logo Muhammadiyah">
+      {% include "Muhammadiyah.svg" %}
       <span>
         <strong>{{ profil.nama_singkat|default:'PCM Todanan' }}</strong>
       </span>
