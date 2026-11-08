@@ -158,7 +158,7 @@ form input, form textarea { width: 100%; padding: 8px; font: inherit; }
 
 .site-header {
     width: 100%;
-    background: #f8f9f4;
+    background: #fff;
     padding: 15px 5%;
     position: sticky;
     top: 0;
@@ -206,7 +206,7 @@ form input, form textarea { width: 100%; padding: 8px; font: inherit; }
     justify-content: center;
     gap: 3px;
     padding: 6px;
-    background: rgba(255, 255, 255, 0.72);
+    background: #fff;
     border: 1px solid #eeefe9;
     border-radius: 50px;
     box-shadow: 0 3px 12px rgba(30, 60, 40, 0.03);
