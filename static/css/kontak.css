@@ -1,0 +1,160 @@
+/* ==========================================
+   KONTAK PCM TODANAN (mandiri)
+   Panel hijau .pg-visual didefinisikan di berita.css
+   Tombol .ud-tombol didefinisikan di unduhan.css
+   ========================================== */
+
+.kt-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* INFO KONTAK */
+
+.kt-info {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.kt-info .section-heading {
+    margin-bottom: 9px;
+}
+
+.kt-kartu {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    background: #f4f5f7;
+    border-radius: 22px;
+    color: inherit;
+    text-decoration: none;
+    min-width: 0;
+    transition: .3s;
+}
+
+.kt-link:hover {
+    transform: translateY(-4px);
+    background: #eceef2;
+}
+
+.kt-ikon {
+    flex: 0 0 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 20px;
+}
+
+.kt-kartu > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.kt-label {
+    color: #777d8a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.kt-kartu strong {
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #20232b;
+    overflow-wrap: anywhere;
+}
+
+.kt-link:hover strong {
+    color: #07583e;
+}
+
+/* FORMULIR */
+
+.kt-form {
+    padding: 28px;
+    background: #f4f5f7;
+    border-radius: 28px;
+    min-width: 0;
+}
+
+.kt-form form p {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 0 0 16px;
+}
+
+.kt-form label {
+    color: #777d8a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.kt-form input,
+.kt-form textarea,
+.kt-form select {
+    width: 100%;
+    padding: 13px 16px;
+    background: #fff;
+    border: 1px solid #e0e3e8;
+    border-radius: 14px;
+    font: inherit;
+    font-size: 14px;
+    color: #20232b;
+    outline: none;
+    transition: .2s;
+}
+
+.kt-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.kt-form input:focus,
+.kt-form textarea:focus,
+.kt-form select:focus {
+    border-color: #07583e;
+    box-shadow: 0 0 0 3px rgba(7, 88, 62, .12);
+}
+
+.kt-form .errorlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c0392b;
+}
+
+.kt-form .helptext {
+    font-size: 12px;
+    color: #858a95;
+}
+
+.kt-form .ud-tombol {
+    margin-top: 6px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .kt-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .kt-kartu { padding: 16px; border-radius: 20px; }
+    .kt-form { padding: 20px; border-radius: 22px; }
+    .kt-form .ud-tombol { width: 100%; }
+}

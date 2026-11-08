@@ -1,0 +1,113 @@
+/* ==========================================
+   UNDUHAN PCM TODANAN (mandiri)
+   Panel hijau .pg-visual didefinisikan di berita.css
+   .ud-tombol juga dipakai pada tombol kirim di halaman Kontak
+   ========================================== */
+
+.ud-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ud-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 20px;
+    background: #f4f5f7;
+    border-radius: 22px;
+    min-width: 0;
+    transition: .3s;
+}
+
+.ud-item:hover {
+    transform: translateY(-3px);
+    background: #eceef2;
+}
+
+.ud-ikon {
+    flex: 0 0 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #fff;
+    font-size: 22px;
+}
+
+.ud-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.ud-info h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+    color: #20232b;
+    overflow-wrap: anywhere;
+}
+
+.ud-info p {
+    margin: 0 0 6px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #737987;
+}
+
+.ud-tanggal {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #858a95;
+}
+
+/* TOMBOL */
+
+.ud-tombol {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 30px;
+    background: #07583e;
+    color: #fff;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.ud-tombol:hover {
+    background: #043f2c;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .ud-item {
+        flex-wrap: wrap;
+        padding: 16px;
+        gap: 14px;
+        border-radius: 20px;
+    }
+
+    .ud-ikon {
+        flex-basis: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+
+    .ud-info { flex-basis: calc(100% - 60px); }
+    .ud-info h3 { font-size: 15px; }
+
+    .ud-tombol { width: 100%; }
+}

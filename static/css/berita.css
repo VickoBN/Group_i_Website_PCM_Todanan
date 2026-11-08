@@ -1,0 +1,241 @@
+/* ==========================================
+   BERITA PCM TODANAN (daftar + detail)
+   Catatan: blok .pg-visual di bawah dipakai bersama
+   oleh halaman Berita, Agenda, Unduhan, dan Kontak.
+   ========================================== */
+
+/* HERO: panel hijau (dipakai bersama) */
+
+.pg-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    text-align: center;
+    color: #fff;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.14), transparent 45%),
+        linear-gradient(135deg, #0a6b4c, #07583e 60%, #054330);
+}
+
+.pg-visual-logo {
+    width: 92px;
+    height: 92px;
+    padding: 14px;
+    border-radius: 24px;
+    background: #fff;
+    display: grid;
+    place-items: center;
+}
+
+.pg-visual-logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pg-visual-angka {
+    font-size: 46px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+}
+
+.pg-visual-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    opacity: .75;
+    text-transform: uppercase;
+}
+
+/* DAFTAR BERITA */
+
+.bt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* kartu berita (partial kartu_berita.html memakai .kartu) */
+.bt-grid .kartu {
+    min-width: 0;
+    background: #f4f5f7;
+    padding: 12px;
+    border: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.bt-grid .kartu:hover {
+    transform: translateY(-4px);
+    background: #eceef2;
+}
+
+.bt-grid .kartu img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 13px;
+    display: block;
+}
+
+.bt-grid .kartu-isi {
+    padding: 16px 8px 8px;
+}
+
+.bt-grid .kartu-isi small {
+    display: block;
+    color: #858a95;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.bt-grid .kartu-isi h3 {
+    margin: 8px 0;
+    font-size: 17px;
+    line-height: 1.45;
+    letter-spacing: -0.3px;
+    overflow-wrap: anywhere;
+}
+
+.bt-grid .kartu-isi h3 a {
+    color: #20232b;
+    text-decoration: none;
+}
+
+.bt-grid .kartu-isi h3 a:hover {
+    color: #07583e;
+}
+
+.bt-grid .kartu-isi p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #737987;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* PAGINASI */
+
+.bt-paginasi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+    font-size: 13px;
+    color: #777d8a;
+}
+
+.bt-paginasi a {
+    padding: 10px 18px;
+    border: 1px solid #252b38;
+    border-radius: 30px;
+    color: #252b38;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.bt-paginasi a:hover {
+    background: #252b38;
+    color: #fff;
+}
+
+/* DETAIL BERITA */
+
+.bt-artikel {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #f4f5f7;
+    border-radius: 28px;
+}
+
+.bt-kembali {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: #07583e;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.bt-kembali:hover {
+    text-decoration: underline;
+}
+
+.bt-artikel-head h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -1.3px;
+    margin: 0 0 16px;
+    color: #171923;
+    overflow-wrap: anywhere;
+}
+
+.bt-lead {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #5d6371;
+    margin: 0 0 24px;
+}
+
+.bt-sampul {
+    margin: 0 0 26px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #dfe4e9;
+}
+
+.bt-sampul img {
+    display: block;
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+}
+
+.bt-isi {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #2d3340;
+    overflow-wrap: anywhere;
+}
+
+.bt-isi p {
+    margin: 0 0 18px;
+}
+
+.bt-sumber {
+    margin-top: 10px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .bt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .pg-visual { padding: 20px; }
+    .pg-visual-logo { width: 76px; height: 76px; }
+    .pg-visual-angka { font-size: 38px; }
+
+    .bt-grid { grid-template-columns: 1fr; }
+
+    .bt-artikel { padding: 20px; border-radius: 22px; }
+    .bt-lead { font-size: 15px; }
+    .bt-isi { font-size: 14px; }
+}

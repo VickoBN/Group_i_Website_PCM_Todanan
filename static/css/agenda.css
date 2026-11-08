@@ -1,0 +1,122 @@
+/* ==========================================
+   AGENDA PCM TODANAN (mandiri)
+   Panel hijau .pg-visual didefinisikan di berita.css
+   ========================================== */
+
+.ag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ag-item {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    padding: 18px;
+    background: #f4f5f7;
+    border-radius: 22px;
+    min-width: 0;
+    transition: .3s;
+}
+
+.ag-item:hover {
+    transform: translateY(-3px);
+    background: #eceef2;
+}
+
+/* kotak tanggal */
+.ag-tanggal {
+    flex: 0 0 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 14px 8px;
+    border-radius: 16px;
+    background: #07583e;
+    color: #fff;
+    text-align: center;
+}
+
+.ag-tanggal strong {
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.ag-tanggal span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: .85;
+}
+
+.ag-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ag-info h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+    color: #20232b;
+    overflow-wrap: anywhere;
+}
+
+.ag-meta {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #777d8a;
+}
+
+.ag-info p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #737987;
+}
+
+/* agenda yang sudah lewat */
+.ag-selesai {
+    opacity: .75;
+}
+
+.ag-selesai .ag-tanggal {
+    background: #8a909c;
+}
+
+.ag-selesai:hover {
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .ag-item {
+        gap: 14px;
+        padding: 14px;
+        border-radius: 20px;
+    }
+
+    .ag-tanggal {
+        flex-basis: 64px;
+        padding: 10px 6px;
+        border-radius: 14px;
+    }
+
+    .ag-tanggal strong { font-size: 24px; }
+    .ag-info h3 { font-size: 16px; }
+    .ag-meta { flex-direction: column; gap: 4px; }
+}
