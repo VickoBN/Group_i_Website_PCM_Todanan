@@ -1,6 +1,4 @@
 from django.urls import path
-
-from . import placeholder
 from . import views
 from . import view_konten
 
@@ -10,8 +8,8 @@ urlpatterns = [
     path('', views.beranda, name='beranda'),
     path('profil/', views.halaman_profil, name='profil'),
     path('pimpinan/', views.halaman_pimpinan, name='pimpinan'),
-    path('ranting/', placeholder.sementara, name='ranting'),
-    path('amal-usaha/', placeholder.sementara, name='amal_usaha'),
+    path('ranting/', views.ranting, name='ranting'),
+    path('amal-usaha/', views.amal_usaha, name='amal_usaha'),
 
     path('berita/', view_konten.berita_list, name='berita_list'),
     path('berita/<slug:slug>/', view_konten.berita_detail, name='berita_detail'),
