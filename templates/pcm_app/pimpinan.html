@@ -1,12 +1,90 @@
 {% extends 'base.html' %}
-{% block title %}Pimpinan | {{ profil.nama_singkat }}{% endblock %}
+{% block title %}Pimpinan | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
 {% block content %}
-<h1>Pimpinan</h1>
-<div class='grid'>
-  {% for pimpinan in daftar_pimpinan %}
-    {% include 'partials/kartu_pimpinan.html' %}
-  {% empty %}
-    <p>Data pimpinan belum tersedia.</p>
-  {% endfor %}
+<div class="beranda">
+
+  <!-- HERO -->
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">STRUKTUR ORGANISASI</span>
+      <h1>Pimpinan {{ profil.nama_singkat|default:'PCM Todanan' }}</h1>
+      <p>Susunan pimpinan yang mengemban amanah organisasi
+        {% if pimpinan.0.periode %}periode {{ pimpinan.0.periode }}{% endif %}.</p>
+    </div>
+    <div class="hero-image profil-visual">
+      <strong class="pimpinan-total">{{ pimpinan|length }}</strong>
+      <span class="profil-visual-name">Pengurus Pimpinan</span>
+    </div>
+  </section>
+
+  {% if pimpinan %}
+
+  <!-- KETUA (urutan pertama) -->
+  {% with ketua=pimpinan.0 %}
+  <section class="konten-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">PIMPINAN UTAMA</span>
+        <h2>{{ ketua.jabatan }}</h2>
+        <p>Periode {{ ketua.periode }}</p>
+      </div>
+    </div>
+
+    <article class="pimpinan-utama">
+      <div class="pimpinan-foto pimpinan-foto-besar">
+        {% if ketua.foto %}
+          <img src="{{ ketua.foto.url }}" alt="{{ ketua.nama }}">
+        {% else %}
+          <span>{{ ketua.nama|slice:":1" }}</span>
+        {% endif %}
+      </div>
+      <div class="pimpinan-utama-info">
+        <span class="info-label">{{ ketua.jabatan|upper }}</span>
+        <h3>{{ ketua.nama }}</h3>
+        <span class="pimpinan-periode">Periode {{ ketua.periode }}</span>
+      </div>
+    </article>
+  </section>
+  {% endwith %}
+
+  <!-- PIMPINAN LAIN -->
+  {% if pimpinan|length > 1 %}
+  <section class="konten-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">SUSUNAN PIMPINAN</span>
+        <h2>Anggota Pimpinan</h2>
+        <p>Pengurus lainnya</p>
+      </div>
+    </div>
+
+    <div class="pimpinan-grid">
+      {% for p in pimpinan|slice:"1:" %}
+      <article class="pimpinan-card">
+        <div class="pimpinan-foto">
+          {% if p.foto %}
+            <img src="{{ p.foto.url }}" alt="{{ p.nama }}">
+          {% else %}
+            <span>{{ p.nama|slice:":1" }}</span>
+          {% endif %}
+        </div>
+        <h3>{{ p.nama }}</h3>
+        <span class="pimpinan-jabatan">{{ p.jabatan }}</span>
+        <span class="pimpinan-periode">{{ p.periode }}</span>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% else %}
+  <section class="konten-section">
+    <div class="agenda-grid">
+      <div class="empty-state">Data pimpinan belum tersedia.</div>
+    </div>
+  </section>
+  {% endif %}
+
 </div>
 {% endblock %}
