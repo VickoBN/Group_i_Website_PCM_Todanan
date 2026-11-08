@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero" {% if profil.gambar_hero %}style="background-image: url({{ profil.gambar_hero.url }})"{% endif %}>
+  <div class="hero-isi">
+    <h1>{{ profil.nama|default:'PCM Todanan' }}</h1>
+    <p>{{ profil.tagline }}</p>
+  </div>
+</section>
+
+<section class="statistik">
+  <div class="stat"><strong>{{ jumlah_ranting }}</strong><span>Ranting</span></div>
+  <div class="stat"><strong>{{ jumlah_amal_usaha }}</strong><span>Amal usaha</span></div>
+  <div class="stat"><strong>{{ profil.jumlah_anggota_ktam|default:0 }}</strong><span>Anggota ber-KTAM</span></div>
+</section>
+
+<h2>Berita Terbaru</h2>
+<div class="grid">
+  {% for berita in berita_terbaru %}
+    {% include 'pcm_app/partials/kartu_berita.html' %}
+  {% empty %}
+    <p>Belum ada berita.</p>
+  {% endfor %}
+</div>
+
+<h2>Agenda Mendatang</h2>
+<ul class="daftar-agenda">
+  {% for agenda in agenda_mendatang %}
+    <li>
+      <strong>{{ agenda.nama_kegiatan }}</strong>
+      <small>{{ agenda.waktu_mulai|date:'d F Y' }}{% if agenda.tempat %} · {{ agenda.tempat }}{% endif %}</small>
+    </li>
+  {% empty %}
+    <li>Belum ada agenda mendatang.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

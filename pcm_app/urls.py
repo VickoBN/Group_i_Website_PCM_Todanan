@@ -7,7 +7,7 @@ from . import view_konten
 app_name = 'pcm_app'
 
 urlpatterns = [
-    path('', placeholder.sementara, name='beranda'),
+    path('', views.beranda, name='beranda'),
     path('profil/', views.halaman_profil, name='profil'),
     path('pimpinan/', views.halaman_pimpinan, name='pimpinan'),
     path('ranting/', placeholder.sementara, name='ranting'),
