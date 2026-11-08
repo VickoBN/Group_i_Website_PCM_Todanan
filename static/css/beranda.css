@@ -204,7 +204,6 @@
 
 .agenda-section {
     padding: 30px;
-    background: #f4f5f7;
     border-radius: 25px;
 }
 
@@ -275,29 +274,6 @@
     color: #858a95;
     background: #f4f5f7;
     border-radius: 15px;
-}
-
-/* FOOTER */
-
-.beranda-footer {
-    margin-top: 50px;
-    padding: 40px 20px;
-    text-align: center;
-    background: #07583e;
-    color: white;
-    border-radius: 22px;
-}
-
-.beranda-footer h2 {
-    font-size: 24px;
-    margin: 0 0 10px;
-}
-
-.beranda-footer p {
-    color: #c3c8d1;
-    font-size: 13px;
-    line-height: 1.7;
-    margin: 0;
 }
 
 /* TABLET */
