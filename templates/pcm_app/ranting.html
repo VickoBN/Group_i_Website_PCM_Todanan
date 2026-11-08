@@ -1,24 +1,83 @@
 {% extends 'base.html' %}
-{% block title %}Ranting | {{ profil.nama_singkat }}{% endblock %}
+{% block title %}Ranting | {{ profil.nama_singkat|default:'PCM Todanan' }}{% endblock %}
+
 {% block content %}
-<h1>Pimpinan Ranting Muhammadiyah</h1>
-<div class='tabel-scroll'>
-  <table>
-    <thead>
-      <tr><th>No.</th><th>Nama ranting</th><th>Ketua</th><th>Alamat</th></tr>
-    </thead>
-    <tbody>
-      {% for ranting in daftar_ranting %}
-      <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ ranting.nama }}</td>
-        <td>{{ ranting.ketua|default:'-' }}</td>
-        <td>{{ ranting.alamat|default:'-' }}</td>
-      </tr>
+<div class="beranda">
+
+  <!-- HERO -->
+  <section class="beranda-hero">
+    <div class="hero-content">
+      <span class="hero-label">PIMPINAN RANTING</span>
+      <h1>Ranting Muhammadiyah di Todanan</h1>
+      <p>Daftar Pimpinan Ranting Muhammadiyah (PRM) di wilayah
+        {{ profil.nama_singkat|default:'PCM Todanan' }}, lengkap dengan ketua dan kontak resminya.</p>
+      <a href="#daftar" class="hero-button">
+        <span>Lihat Daftar</span> <span>→</span>
+      </a>
+    </div>
+
+    <div class="hero-image ranting-visual">
+      <div class="ranting-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+      <strong class="ranting-visual-angka">{{ ranting|length }}</strong>
+      <span class="ranting-visual-name">Pimpinan Ranting</span>
+    </div>
+  </section>
+
+  <!-- DAFTAR RANTING -->
+  <section class="konten-section" id="daftar">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">DAFTAR RANTING</span>
+        <h2>Pimpinan Ranting Muhammadiyah</h2>
+        <p>Data ranting yang berada di bawah naungan cabang</p>
+      </div>
+    </div>
+
+    <div class="ranting-grid">
+      {% for r in ranting %}
+      <article class="ranting-card">
+        <div class="ranting-head">
+          <span class="ranting-no">{{ forloop.counter }}</span>
+          <h3>{{ r.nama }}</h3>
+        </div>
+
+        <ul class="ranting-info">
+          {% if r.ketua %}
+          <li>
+            <span class="ranting-ikon">👤</span>
+            <div>
+              <span class="ranting-label">KETUA</span>
+              <strong>{{ r.ketua }}</strong>
+            </div>
+          </li>
+          {% endif %}
+
+          {% if r.alamat %}
+          <li>
+            <span class="ranting-ikon">📍</span>
+            <div>
+              <span class="ranting-label">ALAMAT</span>
+              <strong>{{ r.alamat }}</strong>
+            </div>
+          </li>
+          {% endif %}
+
+          {% if r.telepon %}
+          <li>
+            <span class="ranting-ikon">📞</span>
+            <div>
+              <span class="ranting-label">TELEPON</span>
+              <strong><a href="tel:{{ r.telepon }}">{{ r.telepon }}</a></strong>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </article>
       {% empty %}
-      <tr><td colspan='4'>Data ranting belum tersedia.</td></tr>
+      <div class="empty-state">Data ranting belum tersedia.</div>
       {% endfor %}
-    </tbody>
-  </table>
+    </div>
+  </section>
+
 </div>
 {% endblock %}
