@@ -8,27 +8,79 @@
   <link rel='stylesheet' href='{% static 'css/style.css' %}'>
 </head>
 <body>
-  <header class='site-header'>
-    <div class='container header-inner'>
-      <a class='brand' href='{% url 'pcm_app:beranda' %}'>
-        <img src='{% static 'img/muhammadiyah.svg' %}' alt='Logo Muhammadiyah' height='48'>
-        <span><strong>{{ profil.nama_singkat|default:'PCM Todanan' }}</strong><small>{{ profil.tagline }}</small></span>
-      </a>
-      <input type='checkbox' id='menu-toggle' class='menu-toggle'>
-      <label for='menu-toggle' class='menu-button' aria-label='Buka menu'>☰</label>
-      <nav class='nav'>
-        <a href='{% url 'pcm_app:beranda' %}'>Beranda</a>
-        <a href='{% url 'pcm_app:profil' %}'>Profil</a>
-        <a href='{% url 'pcm_app:pimpinan' %}'>Pimpinan</a>
-        <a href='{% url 'pcm_app:ranting' %}'>Ranting</a>
-        <a href='{% url 'pcm_app:amal_usaha' %}'>Amal Usaha</a>
-        <a href='{% url 'pcm_app:berita_list' %}'>Berita</a>
-        <a href='{% url 'pcm_app:agenda' %}'>Agenda</a>
-        <a href='{% url 'pcm_app:unduhan' %}'>Unduhan</a>
-        <a href='{% url 'pcm_app:kontak' %}'>Kontak</a>
-      </nav>
-    </div>
-  </header>
+  
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- Logo -->
+    <a class="brand" href="{% url 'pcm_app:beranda' %}">
+      <img src="{% static 'img/muhammadiyah.svg' %}" alt="Logo Muhammadiyah">
+      <span>
+        <strong>{{ profil.nama_singkat|default:'PCM Todanan' }}</strong>
+      </span>
+    </a>
+
+    <!-- Toggle Mobile -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- Navigation -->
+    
+<nav class="nav">
+  <a href="{% url 'pcm_app:beranda' %}"
+     class="{% if request.resolver_match.url_name == 'beranda' %}active{% endif %}">
+     Beranda
+  </a>
+
+  <a href="{% url 'pcm_app:profil' %}"
+     class="{% if request.resolver_match.url_name == 'profil' %}active{% endif %}">
+     Profil
+  </a>
+
+  <a href="{% url 'pcm_app:pimpinan' %}"
+     class="{% if request.resolver_match.url_name == 'pimpinan' %}active{% endif %}">
+     Pimpinan
+  </a>
+
+  <a href="{% url 'pcm_app:ranting' %}"
+     class="{% if request.resolver_match.url_name == 'ranting' %}active{% endif %}">
+     Ranting
+  </a>
+
+  <a href="{% url 'pcm_app:amal_usaha' %}"
+     class="{% if request.resolver_match.url_name == 'amal_usaha' %}active{% endif %}">
+     Amal Usaha
+  </a>
+
+  <a href="{% url 'pcm_app:berita_list' %}"
+     class="{% if request.resolver_match.url_name == 'berita_list' %}active{% endif %}">
+     Berita
+  </a>
+
+  <a href="{% url 'pcm_app:agenda' %}"
+     class="{% if request.resolver_match.url_name == 'agenda' %}active{% endif %}">
+     Agenda
+  </a>
+
+  <a href="{% url 'pcm_app:unduhan' %}"
+     class="{% if request.resolver_match.url_name == 'unduhan' %}active{% endif %}">
+     Unduhan
+  </a>
+</nav>
+
+
+    <!-- CTA Desktop -->
+    <a href="{% url 'pcm_app:kontak' %}" class="header-cta">
+      <span>✦</span> Hubungi Kami <span>→</span>
+    </a>
+
+  </div>
+</header>
+
 
   {% if messages %}
     <div class='container'>

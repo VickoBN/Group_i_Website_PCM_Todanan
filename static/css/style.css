@@ -150,3 +150,234 @@ th { background: var(--abu); }
 .dua-kolom { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
 form p { margin: 0 0 12px; }
 form input, form textarea { width: 100%; padding: 8px; font: inherit; }
+
+
+/* ==============================
+   NAVBAR REDESIGN
+============================== */
+
+.site-header {
+    width: 100%;
+    background: #f8f9f4;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(20, 70, 50, 0.04);
+}
+
+.header-inner {
+    max-width: 1250px;
+    margin: 0 auto;
+    min-height: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+/* LOGO */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #193d30;
+    width: fit-content;
+}
+
+.brand img {
+    width: 34px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.brand strong {
+    font-size: 21px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+/* NAVIGATION PILL */
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #eeefe9;
+    border-radius: 50px;
+    box-shadow: 0 3px 12px rgba(30, 60, 40, 0.03);
+}
+
+.nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    color: #777c75;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 30px;
+    transition: all 0.25s ease;
+}
+
+.nav a:hover {
+    color: #07583e;
+    background: #f2f5ef;
+}
+
+.nav a.active {
+    color: #164c37;
+    font-weight: 700;
+}
+
+.nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 30%;
+    width: 40%;
+    height: 2px;
+    background: #174e38;
+    border-radius: 5px;
+}
+
+/* CTA BUTTON */
+
+.header-cta {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 19px;
+    background: #07583e;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.header-cta:hover {
+    background: #043f2c;
+    transform: translateY(-2px);
+}
+
+.header-cta span:last-child {
+    font-size: 15px;
+}
+
+/* MOBILE TOGGLE */
+
+.menu-toggle,
+.menu-button,
+.mobile-cta {
+    display: none;
+}
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 1100px) {
+    .header-inner {
+        grid-template-columns: 1fr auto;
+    }
+
+    .menu-button {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        background: #edf2ec;
+    }
+
+    .menu-button span {
+        width: 21px;
+        height: 2px;
+        background: #07583e;
+        border-radius: 5px;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 5%;
+        right: 5%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 15px;
+        background: #ffffff;
+        border: 1px solid #e9eee8;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav a {
+        justify-content: flex-start;
+        padding: 13px 16px;
+        font-size: 14px;
+    }
+
+    .nav a.active::after {
+        display: none;
+    }
+
+    .menu-toggle:checked ~ .nav {
+        display: flex;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .mobile-cta {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 8px;
+        background: #07583e;
+        color: #ffffff !important;
+        border-radius: 30px !important;
+    }
+
+    .mobile-cta:hover {
+        background: #043f2c !important;
+    }
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 480px) {
+    .site-header {
+        padding: 12px 5%;
+    }
+
+    .brand img {
+        width: 30px;
+        height: 36px;
+    }
+
+    .brand strong {
+        font-size: 18px;
+    }
+
+    .menu-button {
+        padding: 9px;
+    }
+}
