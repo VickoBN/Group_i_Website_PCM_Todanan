@@ -1,81 +1,96 @@
-/* ==========================================
-   BERANDA PCM TODANAN (KHUSUS BERANDA)
-   ========================================== */
+
+/* =====================================
+   BERANDA PCM TODANAN - MODERN DESIGN
+===================================== */
 
 .beranda {
-  max-width: 1400px;
-  width: calc(100% - 24px);
-  margin: 35px auto 60px;
+  --hijau: #16834b;
+  --hijau-gelap: #086337;
+  --hijau-muda: #eaf5ee;
+  --teks: #202b25;
+  --abu: #778179;
+
+  max-width: 1320px;
+  width: calc(100% - 60px);
+  margin: 45px auto 80px;
+  color: var(--teks);
 }
 
-/* HERO SECTION */
+/* HERO */
 .beranda-hero {
+  position: relative;
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: .9fr 1.1fr;
   align-items: center;
-  gap: 35px;
-  padding: 30px;
-  background: #f4f5f7;
+  gap: 45px;
+  min-height: 400px;
+  padding: 42px;
   border-radius: 28px;
   overflow: hidden;
-  min-height: 330px;
+  background: linear-gradient(120deg, #f0f7f1, #e3f0e6);
+  animation: heroMasuk .9s ease both;
 }
 
 .hero-content {
-  padding: 15px;
+  position: relative;
+  z-index: 2;
+  padding: 10px;
 }
 
 .hero-label,
 .section-label {
   display: inline-block;
-  color: #777d8a;
+  color: var(--hijau);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 2px;
   margin-bottom: 15px;
 }
 
 .hero-content h1 {
-  font-size: clamp(30px, 4vw, 48px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin: 0 0 18px;
-  color: #171923;
+  font-size: clamp(34px, 4vw, 55px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+  color: #173b27;
+  margin: 0 0 20px;
 }
 
 .hero-content p {
+  color: #65766a;
   font-size: 14px;
-  line-height: 1.8;
-  color: #737987;
-  max-width: 400px;
-  margin-bottom: 25px;
+  line-height: 1.9;
+  max-width: 420px;
+  margin-bottom: 28px;
 }
 
 .hero-button {
   display: inline-flex;
   align-items: center;
   gap: 25px;
-  padding: 13px 20px;
-  border: 1px solid #252b38;
-  border-radius: 30px;
+  padding: 14px 22px;
+  background: var(--hijau);
+  color: white;
+  border-radius: 50px;
   text-decoration: none;
-  color: #252b38;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  transition: .3s;
+  box-shadow: 0 8px 20px #16834b30;
+  transition: .3s ease;
 }
 
 .hero-button:hover {
-  background: #252b38;
-  color: white;
+  background: var(--hijau-gelap);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px #16834b40;
 }
 
 .hero-image {
-  width: 100%;
-  height: 275px;
-  border-radius: 20px;
+  position: relative;
+  height: 310px;
   overflow: hidden;
-  background: #dfe4e9;
+  border-radius: 22px;
+  background: #d5e7d9;
+  box-shadow: 0 15px 40px #174d2b20;
 }
 
 .hero-image img {
@@ -83,153 +98,186 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform .8s ease;
+}
+
+.hero-image:hover img {
+  transform: scale(1.06);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #0a422a22, transparent 55%);
+  pointer-events: none;
 }
 
 .hero-image-placeholder {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #dce2e8, #aeb9c6);
-  color: #394354;
-  font-weight: 700;
-  letter-spacing: 3px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #dceee0, #a9cdb1);
+  color: var(--hijau-gelap);
+  font-weight: 800;
+  letter-spacing: 4px;
 }
 
-/* STATISTIK SECTION */
-.statistik-section {
-  margin-top: 55px;
+/* SECTION HEADING */
+.statistik-section,
+.konten-section {
+  margin-top: 65px;
 }
 
 .section-heading {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 23px;
+  margin-bottom: 25px;
 }
 
 .section-heading h2 {
-  font-size: 27px;
-  letter-spacing: -0.7px;
+  font-size: clamp(24px, 3vw, 31px);
+  letter-spacing: -1px;
   margin: 0 0 8px;
-  color: #20232b;
+  color: #1e3024;
 }
 
 .section-heading p {
-  color: #858a95;
+  color: var(--abu);
   font-size: 13px;
   margin: 0;
+  line-height: 1.7;
 }
 
+/* STATISTIK */
 .statistik-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .stat-card {
-  background: #f4f5f7;
-  padding: 25px;
+  position: relative;
+  padding: 27px;
+  background: white;
+  border: 1px solid #e9eee9;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  transition: .3s;
+  gap: 10px;
+  box-shadow: 0 5px 20px #1b3e2610;
+  transition: .35s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
-  background: #eceef2;
+  transform: translateY(-7px);
+  border-color: #b6ddc1;
+  box-shadow: 0 14px 30px #16834b16;
 }
 
 .stat-icon {
-  width: 38px;
-  height: 38px;
+  width: 45px;
+  height: 45px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
-  background: #ffffff;
-  color: #35465d;
-  font-size: 20px;
+  border-radius: 14px;
+  background: var(--hijau-muda);
+  color: var(--hijau);
+  font-size: 23px;
 }
 
 .stat-card strong {
-  font-size: 32px;
-  color: #20232b;
-  font-weight: 700;
+  font-size: 35px;
+  font-weight: 800;
+  color: var(--hijau-gelap);
 }
 
 .stat-card span:last-child {
   font-size: 13px;
-  color: #777d8a;
+  color: var(--abu);
 }
 
-/* BERITA TERBARU */
-.konten-section {
-  margin-top: 60px;
-}
-
+/* BERITA */
 .berita-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.berita-grid > div {
+  min-width: 0;
 }
 
 .berita-card {
-  min-width: 0;
-  background: #f4f5f7;
+  height: 100%;
+  background: white;
+  border: 1px solid #e9eee9;
   padding: 12px;
   border-radius: 20px;
   overflow: hidden;
-  transition: .3s;
+  box-shadow: 0 5px 20px #1b3e260a;
+  transition: .35s ease;
 }
 
 .berita-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px #16834b18;
 }
 
 .berita-card img {
   width: 100%;
-  height: 180px;
+  height: 190px;
   object-fit: cover;
   border-radius: 13px;
+  transition: .5s;
 }
 
-/* AGENDA SECTION */
+.berita-card:hover img {
+  transform: scale(1.025);
+}
+
+/* AGENDA */
 .agenda-section {
+  padding: 30px;
   border-radius: 25px;
+  background: #f5f9f5;
 }
 
 .agenda-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .agenda-card {
-  background: white;
-  padding: 20px;
-  border-radius: 17px;
+  min-width: 0;
   display: flex;
   align-items: flex-start;
-  gap: 13px;
-  min-width: 0;
-  transition: .3s;
+  gap: 15px;
+  padding: 22px;
+  background: white;
+  border: 1px solid #e9eee9;
+  border-radius: 17px;
+  transition: .3s ease;
 }
 
 .agenda-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  border-color: #a9d4b4;
+  box-shadow: 0 10px 25px #16834b12;
 }
 
 .agenda-icon {
-  min-width: 38px;
-  height: 38px;
-  background: #eef0f4;
-  border-radius: 12px;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  background: var(--hijau-muda);
+  border-radius: 13px;
   display: grid;
   place-items: center;
-  color: #35465d;
-  font-size: 18px;
+  color: var(--hijau);
+  font-size: 21px;
 }
 
 .agenda-info {
@@ -238,83 +286,125 @@
 }
 
 .agenda-date {
-  color: #858a95;
   font-size: 11px;
+  font-weight: 700;
+  color: var(--hijau);
 }
 
 .agenda-info h3 {
   font-size: 15px;
+  line-height: 1.6;
   margin: 8px 0;
-  line-height: 1.5;
+  color: #26372c;
   overflow-wrap: anywhere;
 }
 
 .agenda-info p {
   font-size: 12px;
-  color: #858a95;
+  color: var(--abu);
   margin: 0;
 }
 
 .agenda-arrow {
-  color: #777d8a;
-  font-size: 18px;
+  color: var(--hijau);
+  font-size: 20px;
+  transition: .3s;
+}
+
+.agenda-card:hover .agenda-arrow {
+  transform: translateX(5px);
 }
 
 .empty-state {
   grid-column: 1 / -1;
-  padding: 30px;
+  padding: 35px;
   text-align: center;
-  color: #858a95;
-  background: #f4f5f7;
-  border-radius: 15px;
+  color: var(--abu);
+  background: white;
+  border-radius: 17px;
 }
 
-/* MEDIA QUERIES (TABLET & MOBILE) */
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* HERO ANIMATION */
+@keyframes heroMasuk {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET */
 @media (max-width: 900px) {
+  .beranda {
+    width: calc(100% - 40px);
+  }
+
   .beranda-hero {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 22px;
+    gap: 25px;
+    padding: 28px;
   }
 
   .hero-image {
-    height: 240px;
+    height: 260px;
   }
 
-  .berita-grid,
-  .agenda-grid {
+  .berita-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
   .beranda {
     width: calc(100% - 28px);
-    margin: 20px auto 40px;
+    margin: 22px auto 45px;
   }
 
   .beranda-hero {
     grid-template-columns: 1fr;
-    padding: 20px;
-    gap: 20px;
+    gap: 22px;
+    padding: 23px;
     border-radius: 22px;
   }
 
   .hero-content {
-    padding: 5px;
+    padding: 3px;
   }
 
   .hero-content h1 {
-    font-size: 32px;
+    font-size: 35px;
+  }
+
+  .hero-content p {
+    font-size: 13px;
   }
 
   .hero-image {
-    height: 210px;
+    height: 220px;
+    border-radius: 17px;
   }
 
   .statistik-section,
   .konten-section {
-    margin-top: 40px;
+    margin-top: 43px;
   }
 
   .statistik-grid {
@@ -325,7 +415,7 @@
   .stat-card {
     padding: 18px;
     display: grid;
-    grid-template-columns: 42px 1fr;
+    grid-template-columns: 48px 1fr;
     align-items: center;
     column-gap: 12px;
   }
@@ -335,7 +425,7 @@
   }
 
   .stat-card strong {
-    font-size: 25px;
+    font-size: 26px;
   }
 
   .berita-grid,
@@ -343,11 +433,30 @@
     grid-template-columns: 1fr;
   }
 
-  .section-heading h2 {
-    font-size: 23px;
-  }
-
   .agenda-section {
     padding: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: 24px;
+  }
+
+  .reveal {
+    transform: translateY(22px);
+  }
+}
+
+/* AKSESIBILITAS */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .beranda-hero,
+  .hero-image img,
+  .stat-card,
+  .berita-card,
+  .agenda-card {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
