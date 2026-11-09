@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: pcm
+      POSTGRES_USER: pcm
+      # Hanya untuk jaringan internal compose lokal (port db tidak dibuka ke host).
+      # JANGAN dipakai di produksi.
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U pcm -d pcm]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DEBUG: 'False'
+      ALLOW_EPHEMERAL_SECRET_KEY: '1'
+      SECRET_KEY: ${SECRET_KEY:-}
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      CSRF_TRUSTED_ORIGINS: http://localhost:8000,http://127.0.0.1:8000
+      DATABASE_URL: postgres://pcm@db:5432/pcm
+    ports:
+      - '8000:8000'
+    volumes:
+      - media:/app/media
+
+volumes:
+  pgdata:
+  media:
