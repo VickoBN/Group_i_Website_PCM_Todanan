@@ -1,36 +1,166 @@
+
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Beranda | PCM Todanan{% endblock %}
+
 {% block content %}
-<section class="hero" {% if profil.gambar_hero %}style="background-image: url({{ profil.gambar_hero.url }})"{% endif %}>
-  <div class="hero-isi">
-    <h1>{{ profil.nama|default:'PCM Todanan' }}</h1>
-    <p>{{ profil.tagline }}</p>
-  </div>
-</section>
 
-<section class="statistik">
-  <div class="stat"><strong>{{ jumlah_ranting }}</strong><span>Ranting</span></div>
-  <div class="stat"><strong>{{ jumlah_amal_usaha }}</strong><span>Amal usaha</span></div>
-  <div class="stat"><strong>{{ profil.jumlah_anggota_ktam|default:0 }}</strong><span>Anggota ber-KTAM</span></div>
-</section>
+<main class="beranda">
 
-<h2>Berita Terbaru</h2>
-<div class="grid">
-  {% for berita in berita_terbaru %}
-    {% include 'pcm_app/partials/kartu_berita.html' %}
-  {% empty %}
-    <p>Belum ada berita.</p>
-  {% endfor %}
-</div>
+  <!-- HERO -->
+  <section class="beranda-hero reveal">
+    <div class="hero-content">
+      <span class="hero-label">PIMPINAN CABANG MUHAMMADIYAH</span>
 
-<h2>Agenda Mendatang</h2>
-<ul class="daftar-agenda">
-  {% for agenda in agenda_mendatang %}
-    <li>
-      <strong>{{ agenda.nama_kegiatan }}</strong>
-      <small>{{ agenda.waktu_mulai|date:'d F Y' }}{% if agenda.tempat %} · {{ agenda.tempat }}{% endif %}</small>
-    </li>
-  {% empty %}
-    <li>Belum ada agenda mendatang.</li>
-  {% endfor %}
-</ul>
+      <h1>{{ profil.nama|default:'PCM Todanan' }}</h1>
+
+      <p>
+        {{ profil.tagline|default:'Bersama membangun umat, memperkuat persaudaraan, dan memberikan manfaat bagi masyarakat.' }}
+      </p>
+
+      <a href="#berita" class="hero-button">
+        Jelajahi Informasi <span>→</span>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      {% if profil.gambar_hero %}
+        <img src="{{ profil.gambar_hero.url }}" alt="PCM Todanan">
+      {% else %}
+        <div class="hero-image-placeholder">
+          PCM TODANAN
+        </div>
+      {% endif %}
+      <div class="hero-image-overlay"></div>
+    </div>
+  </section>
+
+
+  <!-- STATISTIK -->
+  <section class="statistik-section">
+    <div class="section-heading reveal">
+      <div>
+        <span class="section-label">PCM TODANAN</span>
+        <h2>Dalam Angka</h2>
+        <p>Gambaran perkembangan organisasi kami.</p>
+      </div>
+    </div>
+
+    <div class="statistik-grid">
+      <div class="stat-card reveal">
+        <div class="stat-icon">⌂</div>
+        <strong>{{ jumlah_ranting }}</strong>
+        <span>Ranting Muhammadiyah</span>
+      </div>
+
+      <div class="stat-card reveal">
+        <div class="stat-icon">✦</div>
+        <strong>{{ jumlah_amal_usaha }}</strong>
+        <span>Amal Usaha</span>
+      </div>
+
+      <div class="stat-card reveal">
+        <div class="stat-icon">♧</div>
+        <strong>{{ profil.jumlah_anggota_ktam|default:0 }}</strong>
+        <span>Anggota Ber-KTAM</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BERITA -->
+  <section class="konten-section" id="berita">
+    <div class="section-heading reveal">
+      <div>
+        <span class="section-label">INFORMASI TERKINI</span>
+        <h2>Berita Terbaru</h2>
+        <p>Ikuti kabar dan kegiatan PCM Todanan.</p>
+      </div>
+    </div>
+
+    <div class="berita-grid">
+      {% for berita in berita_terbaru %}
+        <div class="reveal">
+          {% include 'pcm_app/partials/kartu_berita.html' %}
+        </div>
+      {% empty %}
+        <div class="empty-state">
+          Belum ada berita terbaru.
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+
+  <!-- AGENDA -->
+  <section class="konten-section agenda-section">
+    <div class="section-heading reveal">
+      <div>
+        <span class="section-label">JADWAL KEGIATAN</span>
+        <h2>Agenda Mendatang</h2>
+        <p>Jadwal kegiatan dan aktivitas PCM Todanan.</p>
+      </div>
+    </div>
+
+    <div class="agenda-grid">
+      {% for agenda in agenda_mendatang %}
+        <div class="agenda-card reveal">
+          <div class="agenda-icon">▦</div>
+
+          <div class="agenda-info">
+            <span class="agenda-date">
+              {{ agenda.waktu_mulai|date:'d F Y' }}
+            </span>
+
+            <h3>{{ agenda.nama_kegiatan }}</h3>
+
+            {% if agenda.tempat %}
+              <p>⌖ {{ agenda.tempat }}</p>
+            {% endif %}
+          </div>
+
+          <span class="agenda-arrow">→</span>
+        </div>
+      {% empty %}
+        <div class="empty-state">
+          Belum ada agenda mendatang.
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+</main>
+
+
+<!-- SCROLL ANIMATION -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".reveal");
+
+  if (!("IntersectionObserver" in window)) {
+    elements.forEach(el => el.classList.add("active"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -35px 0px"
+  });
+
+  elements.forEach((el, index) => {
+    el.style.transitionDelay = `${(index % 3) * 100}ms`;
+    observer.observe(el);
+  });
+});
+</script>
+
 {% endblock %}
+  
