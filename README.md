@@ -9,7 +9,7 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 
 * **Nama Kelompok:** Kelompok I
 * **Anggota Kelompok:**
-  1.  Kayla Raniahasna NIM: L200240008 
+  1.  Kayla Raniahasna Aryadewi NIM: L200240008 
   2.  Vicko Bahctiar Nurrahmat NIM: L200240033
   3.  Gladiza Fauzura Ristandanty NIM: L200240037
   4.  Adrian Ega Fareelio NIM: L200240047
