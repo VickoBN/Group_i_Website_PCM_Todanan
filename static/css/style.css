@@ -369,7 +369,7 @@ form textarea {
 .site-footer {
   background: #07583e;
   color: #ffffff;
-  padding: 50px 24px 25px;
+  padding: 15px 24px 15px;
   border-radius: 25px;
   margin: 50px auto 30px;
   max-width: 1350px;
@@ -380,8 +380,6 @@ form textarea {
   display: grid;
   grid-template-columns: 1.5fr repeat(3, 1fr);
   gap: 30px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-brand-col h3 {
@@ -410,6 +408,7 @@ form textarea {
   border-radius: 8px;
   color: #333;
   outline: none;
+  font-size: 15px;
 }
 
 .footer-newsletter-form button {
