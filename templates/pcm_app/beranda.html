@@ -10,7 +10,7 @@
             <span class="hero-label">PIMPINAN CABANG MUHAMMADIYAH</span>
             <h1>{{ profil.nama|default:'PCM Todanan' }}</h1>
             <p>{{ profil.tagline|default:'Bersama membangun umat, memperkuat persyarikatan, dan memberikan manfaat bagi masyarakat.' }}</p>
-            <a href="#statistik" class="hero-button">
+            <a href="{% url 'pcm_app:profil' %}" class="hero-button">
                 Jelajahi Lebih Lanjut <span>↗</span>
             </a>
         </div>
