@@ -43,6 +43,25 @@ RANTING = [
     ('PRM Kedungwungu', 'Susanto, S.Pd', 'Desa Kedungwungu'),
     ('PRM Tinapan', 'Didik Suprianto', 'Desa Tinapan'),
 ]
+AUM_PENDIDIKAN = [
+    ('MI Muhammadiyah 01 Todanan', 'Desa Todanan'),
+    ('MI Muhammadiyah Pelemsengir', 'Desa Pelemsengir'),
+    ('SMP Muhammadiyah 9 Todanan', 'Desa Todanan'),
+    ('MTs Muhammadiyah Pelemsengir', 'Desa Pelemsengir'),
+    ('SMA Muhammadiyah Todanan', 'Desa Todanan'),
+    ('SMK Muhammadiyah Todanan', 'Dukuh Padas, Desa Todanan'),
+    ('Madrasah Diniyah (Madin) Al Hikmah', 'Desa Todanan'),
+    ('Madin Fastabiqul Khoirot', 'Dukuh Padas, Desa Todanan'),
+]
+
+AUM_TEMPAT_IBADAH = [
+    ('Masjid Al Hikmah Todanan', 'Desa Todanan'),
+    ('Masjid Al Muhajirin', 'Desa Todanan'),
+    ('Masjid Fastabiqul Khoirot', 'Desa Todanan'),
+    ('Mushola Al Falah', 'Desa Todanan'),
+    ('Mushola At Taqwa Mariza', 'Desa Todanan'),
+    ("Mushola Al Jami'", 'Desa Todanan'),
+]
 DOKUMEN = [
     ('Panduan Muscab Muhammadiyah ’Aisyiyah 2023',
      'Buku panduan pelaksanaan Musyawarah Cabang Muhammadiyah dan ’Aisyiyah Todanan 2023, memuat LPJ aset tanah SIMAM, majelis, dan susunan pengurus lengkap. Terbit 22 Juli 2023.',
