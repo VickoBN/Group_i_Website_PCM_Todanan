@@ -1,7 +1,10 @@
+import os
 from datetime import datetime
 
 from django.core.management.base import BaseCommand
 from django.utils import timezone
+from django.conf import settings
+from django.core.files import File
 
 from pcm_app.models import (
     Agenda, Berita, Dokumen, Pimpinan, Profil, Ranting, TautanTerkait,
@@ -123,7 +126,13 @@ class Command(BaseCommand):
         profil.save()
 
     def isi_pimpinan(self):
-        Pimpinan.objects.update_or_create(jabatan=KETUA['jabatan'], defaults=KETUA)
+        pimpinan, _ = Pimpinan.objects.update_or_create(
+            jabatan=KETUA['jabatan'], defaults=KETUA
+        )
+        path_foto = os.path.join(settings.BASE_DIR, 'pcm_app', 'seed_images', 'ketua.jpeg')
+        if os.path.exists(path_foto) and not pimpinan.foto:
+            with open(path_foto, 'rb') as f:
+                pimpinan.foto.save('ketua.jpeg', File(f), save=True)
 
     def isi_ranting(self):
         for nama, ketua, alamat in RANTING:
