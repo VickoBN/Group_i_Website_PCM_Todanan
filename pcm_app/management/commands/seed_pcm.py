@@ -7,7 +7,7 @@ from django.conf import settings
 from django.core.files import File
 
 from pcm_app.models import (
-    Agenda, Berita, Dokumen, Pimpinan, Profil, Ranting, TautanTerkait,
+    Agenda, Berita, Dokumen, Pimpinan, Profil, Ranting, TautanTerkait, AmalUsaha,
 )
 # Semua data berasal dari README repo ini (formulir Google Forms pengurus PCM,
 # diambil 28 Oktober 2026). Jangan menambah data karangan.
@@ -94,6 +94,7 @@ class Command(BaseCommand):
         self.isi_profil()
         self.isi_pimpinan()
         self.isi_ranting()
+        self.isi_aum()
         self.isi_dokumen()
         self.isi_agenda()
         self.isi_berita()
@@ -143,6 +144,27 @@ class Command(BaseCommand):
         for kolom, nilai in PROFIL.items():
             setattr(profil, kolom, nilai)
         profil.save()
+
+    def isi_aum(self):
+        for nama, alamat in AUM_PENDIDIKAN:
+            AmalUsaha.objects.update_or_create(
+                nama=nama,
+                bidang=AmalUsaha.Bidang.PENDIDIKAN,
+                defaults={
+                    'alamat': alamat,
+                    'deskripsi': 'Amal Usaha Muhammadiyah bidang pendidikan.',
+                },
+        )
+
+        for nama, alamat in AUM_TEMPAT_IBADAH:
+            AmalUsaha.objects.update_or_create(
+                nama=nama,
+                bidang=AmalUsaha.Bidang.SOSIAL,
+                defaults={
+                    'alamat': alamat,
+                    'deskripsi': 'Amal Usaha Muhammadiyah berupa tempat ibadah.',
+                },
+            )
 
     def isi_pimpinan(self):
         pimpinan, _ = Pimpinan.objects.update_or_create(
