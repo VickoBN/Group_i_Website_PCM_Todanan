@@ -1,0 +1,54 @@
+{% extends "admin/index.html" %}
+{% load static pcm_admin %}
+
+{% block content %}
+{% pcm_statistik as s %}
+
+<div class="pcm-welcome">
+  <img src="{% static 'logo/Muhammadiyah.svg' %}" alt="">
+  <div>
+    <h2>Selamat datang, {{ user.get_short_name|default:user.get_username }}</h2>
+    <p>Kelola konten website PCM Todanan dari satu tempat.</p>
+  </div>
+</div>
+
+<div class="pcm-stats">
+  <a class="pcm-stat" href="{% url 'admin:pcm_app_berita_changelist' %}">
+    <span class="pcm-stat-angka">{{ s.berita_terbit }}</span>
+    <span class="pcm-stat-label">Berita terbit</span>
+  </a>
+  <a class="pcm-stat {% if s.berita_draf %}pcm-perhatian{% endif %}" href="{% url 'admin:pcm_app_berita_changelist' %}?status__exact=draf">
+    <span class="pcm-stat-angka">{{ s.berita_draf }}</span>
+    <span class="pcm-stat-label">Berita draf</span>
+  </a>
+  <a class="pcm-stat" href="{% url 'admin:pcm_app_agenda_changelist' %}">
+    <span class="pcm-stat-angka">{{ s.agenda_mendatang }}</span>
+    <span class="pcm-stat-label">Agenda mendatang</span>
+  </a>
+  <a class="pcm-stat {% if s.pesan_baru %}pcm-perhatian{% endif %}" href="{% url 'admin:pcm_app_pesanmasuk_changelist' %}?sudah_dibaca__exact=0">
+    <span class="pcm-stat-angka">{{ s.pesan_baru }}</span>
+    <span class="pcm-stat-label">Pesan belum dibaca</span>
+  </a>
+  <a class="pcm-stat" href="{% url 'admin:pcm_app_ranting_changelist' %}">
+    <span class="pcm-stat-angka">{{ s.ranting }}</span>
+    <span class="pcm-stat-label">Ranting (PRM)</span>
+  </a>
+  <a class="pcm-stat" href="{% url 'admin:pcm_app_amalusaha_changelist' %}">
+    <span class="pcm-stat-angka">{{ s.amal_usaha }}</span>
+    <span class="pcm-stat-label">Amal usaha</span>
+  </a>
+  <a class="pcm-stat" href="{% url 'admin:pcm_app_dokumen_changelist' %}">
+    <span class="pcm-stat-angka">{{ s.dokumen }}</span>
+    <span class="pcm-stat-label">Dokumen unduhan</span>
+  </a>
+</div>
+
+<div class="pcm-aksi">
+  <a href="{% url 'admin:pcm_app_berita_add' %}">+ Tulis berita</a>
+  <a href="{% url 'admin:pcm_app_agenda_add' %}">+ Tambah agenda</a>
+  <a href="{% url 'admin:pcm_app_dokumen_add' %}">+ Unggah dokumen</a>
+  <a href="{% url 'admin:pcm_app_ranting_add' %}">+ Tambah ranting</a>
+</div>
+
+{{ block.super }}
+{% endblock %}

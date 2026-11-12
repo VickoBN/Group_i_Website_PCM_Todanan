@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/svg+xml" href="{% static 'logo/Muhammadiyah.svg' %}?v=1">
+<script>
+  // Paksa tema terang & hapus pilihan tema yang tersimpan
+  document.documentElement.dataset.theme = "light";
+  try { localStorage.setItem("theme", "light"); } catch (e) {}
+</script>
+{% endblock %}
+
+{% block title %}{{ title }} | {{ site_title|default:"Admin PCM Todanan" }}{% endblock %}
+
+{% block branding %}
+<div id="site-name">
+  <a href="{% url 'admin:index' %}" class="pcm-brand">
+    <img src="{% static 'logo/Muhammadiyah.svg' %}" alt="Logo Muhammadiyah">
+    <span>
+      <strong>{{ site_header|default:"Admin PCM Todanan" }}</strong>
+    </span>
+  </a>
+</div>
+{% endblock %}
+
+{% block userlinks %}
+<a href="{% url 'pcm_app:beranda' %}" class="pcm-lihat-web" target="_blank" rel="noopener">Lihat Website ↗</a>
+{{ block.super }}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

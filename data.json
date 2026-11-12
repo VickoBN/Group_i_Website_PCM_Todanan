@@ -1,0 +1,77 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$yqkOq7PuxlceKb2PlZnGuR$ZiJQJnNGmafIE4CfAIzzdlQhGnhFiEOQOk4q1kC0JKg=",
+    "last_login": "2026-11-12T15:24:51.613Z",
+    "is_superuser": true,
+    "username": "ega",
+    "first_name": "",
+    "last_name": "",
+    "email": "ega@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-29T12:14:45.725Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "f556jtyvs1q4i0i3w4tkp1olamutam2d",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxM5MstPvhkCP3HaQ7tBunVNv6zIj3xV-0MGvPeXn5XD_DiqM-q0pkSpCFueVnYjAaFRaJDepqWC2xhqlpbaGLPqCQaEwKF0GcMFrlwJ7fwDhajei:1xR9Dz:JlNOx_0M9ScttrkVOMP7RhJwOUSie0IaCLIabidfZ7E",
+    "expire_date": "2026-11-25T14:22:55.959Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "men39obfkrq8etmvmlqb1ue6zm31a3xx",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxM5MstPvhkCP3HaQ7tBunVNv6zIj3xV-0MGvPeXn5XD_DiqM-q0pkSpCFueVnYjAaFRaJDepqWC2xhqlpbaGLPqCQaEwKF0GcMFrlwJ7fwDhajei:1xPy1a:GFjwQQIuGilZKSu7ErguK0XxtXYnrSab8ms4aDSQ8X0",
+    "expire_date": "2026-11-22T08:13:14.394Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nzdy3rxoyjc8zkloc5yhelyrdfkpt31r",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxM5MstPvhkCP3HaQ7tBunVNv6zIj3xV-0MGvPeXn5XD_DiqM-q0pkSpCFueVnYjAaFRaJDepqWC2xhqlpbaGLPqCQaEwKF0GcMFrlwJ7fwDhajei:1xRWfT:L6Edjvf9aabDD_uQ5aos2jVORFQSbJFQlLoiz4RJ8Ek",
+    "expire_date": "2026-11-26T15:24:51.614Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "uqroy9ytpp73vnexsokit78xbyl4w29c",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxM5MstPvhkCP3HaQ7tBunVNv6zIj3xV-0MGvPeXn5XD_DiqM-q0pkSpCFueVnYjAaFRaJDepqWC2xhqlpbaGLPqCQaEwKF0GcMFrlwJ7fwDhajei:1xR2B6:kfP8MHysfezHzM9sWnXg9fx0P2C9TqV499-2RdspjQ0",
+    "expire_date": "2026-11-25T06:51:28.994Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zsg4g3jjmuyoqtpt1bcqj352ia3bx1y7",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxM5MstPvhkCP3HaQ7tBunVNv6zIj3xV-0MGvPeXn5XD_DiqM-q0pkSpCFueVnYjAaFRaJDepqWC2xhqlpbaGLPqCQaEwKF0GcMFrlwJ7fwDhajei:1xPurw:Q9IfxKMDXQVpBleW7_xyiFn7dxfGTEx5bFVdRDBhbuI",
+    "expire_date": "2026-11-22T04:51:04.204Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-11-08T07:39:28.220Z",
+    "user": [
+      "ega"
+    ],
+    "content_type": [
+      "pcm_app",
+      "profil"
+    ],
+    "object_id": "2",
+    "object_repr": "Pimpinan Cabang Muhammadiyah Todanan",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+}
+]
