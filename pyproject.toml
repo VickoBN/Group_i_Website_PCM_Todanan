@@ -3,10 +3,8 @@ name = "group-i-website-pcm-todanan"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
-    "boto3>=1.44.1",
     "dj-database-url>=3.1.2",
     "django>=6,<7",
-    "django-storages>=1.14.6",
     "gunicorn>=26.2.0",
     "pillow>=13.0.0",
     "psycopg[binary]>=3.3.6",

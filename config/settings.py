@@ -125,21 +125,3 @@ STORAGES = {
     'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
     'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
 }
-
-# Media di object storage S3-compatible
-# jika dikonfigurasi.
-
-if os.environ.get('AWS_STORAGE_BUCKET_NAME'):
-    STORAGES['default'] = {
-        'BACKEND': 'storages.backends.s3.S3Storage',
-        'OPTIONS': {
-            'bucket_name': os.environ['AWS_STORAGE_BUCKET_NAME'],
-            'endpoint_url': os.environ['AWS_S3_ENDPOINT_URL'],
-            'region_name': os.environ.get('AWS_S3_REGION_NAME', ''),
-            'access_key': os.environ['AWS_ACCESS_KEY_ID'],
-            'secret_key': os.environ['AWS_SECRET_ACCESS_KEY'],
-            'custom_domain': os.environ['MEDIA_PUBLIC_DOMAIN'],
-            'querystring_auth': False,
-            'file_overwrite': False,
-        },
-    }

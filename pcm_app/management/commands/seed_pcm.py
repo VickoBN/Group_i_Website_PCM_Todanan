@@ -54,9 +54,9 @@ DOKUMEN = [
 
 # Judul asli belum diketahui; ganti lewat admin setelah membuka tiap tautan.
 BERITA = [
-    ('berita-pcm-todanan-1', 'Berita PCM Todanan 1', 'https://share.google/hXuU3HCn0XRZ3SB94', 'YYYY-MM-DD'),
-    ('berita-pcm-todanan-2', 'Berita PCM Todanan 2', 'https://share.google/c1QuOGOxoxBIhVfET', 'YYYY-MM-DD'),
-    ('berita-pcm-todanan-3', 'Berita PCM Todanan 3', 'https://share.google/I6gmrIF9xOjuio3EW', 'YYYY-MM-DD'),
+    ('berita-pcm-todanan-1', 'Berita PCM Todanan 1', 'https://share.google/hXuU3HCn0XRZ3SB94', '2025-10-19'),
+    ('berita-pcm-todanan-2', 'Berita PCM Todanan 2', 'https://share.google/c1QuOGOxoxBIhVfET', '2018-10-21'),
+    ('berita-pcm-todanan-3', 'Berita PCM Todanan 3', 'https://share.google/I6gmrIF9xOjuio3EW', '2018-10-23'),
 ]
 
 TAUTAN = [
