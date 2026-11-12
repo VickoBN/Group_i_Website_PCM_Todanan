@@ -54,9 +54,9 @@ DOKUMEN = [
 
 # Judul asli belum diketahui; ganti lewat admin setelah membuka tiap tautan.
 BERITA = [
-    ('berita-pcm-todanan-1', 'Berita PCM Todanan 1', 'https://share.google/hXuU3HCn0XRZ3SB94'),
-    ('berita-pcm-todanan-2', 'Berita PCM Todanan 2', 'https://share.google/c1QuOGOxoxBIhVfET'),
-    ('berita-pcm-todanan-3', 'Berita PCM Todanan 3', 'https://share.google/I6gmrIF9xOjuio3EW'),
+    ('berita-pcm-todanan-1', 'Berita PCM Todanan 1', 'https://share.google/hXuU3HCn0XRZ3SB94', 'YYYY-MM-DD'),
+    ('berita-pcm-todanan-2', 'Berita PCM Todanan 2', 'https://share.google/c1QuOGOxoxBIhVfET', 'YYYY-MM-DD'),
+    ('berita-pcm-todanan-3', 'Berita PCM Todanan 3', 'https://share.google/I6gmrIF9xOjuio3EW', 'YYYY-MM-DD'),
 ]
 
 TAUTAN = [
@@ -96,8 +96,7 @@ class Command(BaseCommand):
         )
 
     def isi_berita(self):
-        # Tanggal terbit asli tidak diketahui; dipakai tanggal pengambilan data (29 Oktober 2026).
-        for slug, judul, url in BERITA:
+        for slug, judul, url, tanggal in BERITA:
             Berita.objects.get_or_create(
                 slug=slug,
                 defaults={
@@ -105,10 +104,12 @@ class Command(BaseCommand):
                     'ringkasan': 'Pemberitaan tentang PCM Todanan. Baca selengkapnya di sumber asli.',
                     'isi': 'Pemberitaan tentang PCM Todanan dari media online. Baca selengkapnya di sumber asli melalui tautan di bawah.',
                     'sumber_url': url,
-                    'tanggal_terbit': timezone.make_aware(datetime(2026, 10, 29)),
+                    'tanggal_terbit': timezone.make_aware(
+                        datetime.strptime(tanggal, '%Y-%m-%d')
+                    ),
                     'status': Berita.Status.TERBIT,
                 },
-            )
+        )
 
     def isi_tautan(self):
         for nama, url, urutan in TAUTAN:
