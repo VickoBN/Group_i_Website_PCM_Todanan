@@ -1,8 +1,3 @@
-/* ==========================================
-   AMAL USAHA PCM TODANAN (mandiri)
-   ========================================== */
-
-/* HERO: panel hijau */
 
 .amal-visual {
     display: flex;
@@ -48,8 +43,6 @@
     text-transform: uppercase;
 }
 
-/* KARTU */
-
 .amal-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -72,6 +65,7 @@
     background: #eceef2;
 }
 
+
 .amal-foto {
     width: 100%;
     height: 180px;
@@ -85,12 +79,19 @@
     font-weight: 700;
 }
 
+/* PERBAIKAN LOGO: hanya bagian ini yang diubah */
+
 .amal-foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
     display: block;
+    padding: 0;
+    box-sizing: border-box;
+    transform: translateY(-10px);
 }
+
+/* BODY KARTU */
 
 .amal-body {
     display: flex;
@@ -173,18 +174,41 @@
 /* TABLET */
 
 @media (max-width: 900px) {
-    .amal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .amal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 /* MOBILE */
 
 @media (max-width: 600px) {
-    .amal-visual { padding: 20px; }
-    .amal-visual-logo { width: 76px; height: 76px; }
-    .amal-visual-angka { font-size: 38px; }
+    .amal-visual {
+        padding: 20px;
+    }
 
-    .amal-grid { grid-template-columns: 1fr; gap: 12px; }
-    .amal-card { border-radius: 20px; }
-    .amal-foto { height: 160px; }
-    .amal-body h3 { font-size: 16px; }
+    .amal-visual-logo {
+        width: 76px;
+        height: 76px;
+    }
+
+    .amal-visual-angka {
+        font-size: 38px;
+    }
+
+    .amal-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .amal-card {
+        border-radius: 20px;
+    }
+
+    .amal-foto {
+        height: 160px;
+    }
+
+    .amal-body h3 {
+        font-size: 16px;
+    }
 }
