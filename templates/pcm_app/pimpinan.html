@@ -12,10 +12,11 @@
       <p>Susunan pimpinan yang mengemban amanah organisasi
         {% if pimpinan.0.periode %}periode {{ pimpinan.0.periode }}{% endif %}.</p>
     </div>
-    <div class="hero-image profil-visual">
-      <strong class="pimpinan-total">{{ pimpinan|length }}</strong>
-      <span class="profil-visual-name">Pengurus Pimpinan</span>
-    </div>
+    <div class="hero-image pimpinan-visual">
+        <div class="pimpinan-visual-logo">{% include "Muhammadiyah.svg" %}</div>
+        <strong class="pimpinan-visual-angka">{{ pimpinan|length }}</strong>
+        <span class="pimpinan-visual-name">Pengurus Pimpinan</span>
+      </div>
   </section>
 
   {% if pimpinan %}

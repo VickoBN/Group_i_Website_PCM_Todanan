@@ -326,7 +326,7 @@ form .aligned p.help {
 
 #changelist-filter h2 {
   background: #f4f6f5;
-  color: #07583e;
+  color: #000000 !important;
 }
 
 #changelist-filter li.selected a {
@@ -340,6 +340,9 @@ form .aligned p.help {
   background: #fff;
 }
 
+#changelist .toplinks {
+  padding: 10px 16px;
+}
 .paginator a:link,
 .paginator a:visited {
   background: #07583e;

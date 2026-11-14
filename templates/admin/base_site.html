@@ -1,5 +1,5 @@
 {% extends "admin/base.html" %}
-{% load static %}
+{% load i18n static %}
 
 {% block extrastyle %}{{ block.super }}
 <link rel="stylesheet" href="{% static 'css/admin.css' %}">
@@ -28,9 +28,20 @@
 </div>
 {% endblock %}
 
+{% block welcome-msg %}
+  <span>{% translate 'Welcome,' %} <strong>{% firstof user.get_short_name user.get_username %}</strong>.</span>
+{% endblock %}
+
 {% block userlinks %}
-<a href="{% url 'pcm_app:beranda' %}" class="pcm-lihat-web" target="_blank" rel="noopener">Lihat Website ↗</a>
-{{ block.super }}
+  <a href="{% url 'pcm_app:beranda' %}" class="pcm-lihat-web" target="_blank" rel="noopener">Lihat Website ↗</a>
+  {% if user.has_usable_password %}
+    <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+  {% endif %}
+  <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{% url 'admin:login' %}">
+    <button type="submit">{% translate 'Log out' %}</button>
+  </form>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
