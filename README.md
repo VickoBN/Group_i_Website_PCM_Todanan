@@ -107,3 +107,186 @@ Repository ini berisi data dan dokumen resmi Pimpinan Cabang Muhammadiyah (PCM) 
 | **Arsip Dokumen** | Milad Muhammadiyah ke-114 | - | - | - |
 
 ---
+
+## 10. Kontribusi Anggota Kelompok
+
+| No. | Nama Anggota | Pekerjaan |
+|:---:|---|---|
+| 1 | Vicko Bahctiar Nurrahmat | Fondasi dan konfigurasi proyek Django, settings, URL kerangka, serta template dasar |
+| 2 | Adrian Ega Fareelio | Pembuatan model database, migrasi, dan konfigurasi Django Admin |
+| 3 | Gladiza Fauzura Ristandanty | Pengembangan halaman organisasi, beranda, profil, pimpinan, ranting, dan amal usaha |
+| 4 | Kayla Raniahasna Aryadewi | Pengembangan halaman berita, agenda, kontak, formulir pesan, dan pengujian |
+| 5 | Erbita Putri Apriliyana | Seed data PCM, Docker, deployment, object storage, dokumentasi README, dan CI GitHub Actions |
+
+## 11. Cara Menjalankan Website di Laptop
+
+### Prasyarat
+Pastikan perangkat sudah memiliki:
+- Git
+- Python
+- uv
+
+### Langkah-langkah
+
+**1. Clone repository**
+```bash
+git clone https://github.com/USERNAME/Group_i_Website-PCM-Todanan.git
+cd Group_i_Website-PCM-Todanan
+```
+
+**2. Salin file environment**
+```bash
+cp .env.example .env
+```
+
+Untuk Windows Command Prompt:
+```cmd
+copy .env.example .env
+```
+
+**3. Isi SECRET_KEY**
+
+Buka file `.env`, kemudian isi `SECRET_KEY` menggunakan secret key Django yang valid.
+
+**4. Install dependencies**
+```bash
+uv sync
+```
+
+**5. Jalankan migrasi database**
+```bash
+uv run python manage.py migrate
+```
+
+**6. Masukkan data awal PCM Todanan**
+```bash
+uv run python manage.py seed_pcm
+```
+
+**7. Buat akun administrator**
+```bash
+uv run python manage.py createsuperuser
+```
+
+**8. Jalankan server Django**
+```bash
+uv run python manage.py runserver
+```
+
+Website dapat diakses melalui:
+- Website: http://127.0.0.1:8000/
+- Admin: http://127.0.0.1:8000/admin/
+
+**9. Jalankan pengujian**
+```bash
+uv run python manage.py test
+```
+
+---
+
+## 12. Cara Menjalankan Website dengan Docker
+
+Pastikan Docker Desktop sudah berjalan.
+
+**1. Build dan jalankan container**
+```bash
+docker compose up --build
+```
+
+**2. Jalankan seed data**
+```bash
+docker compose exec web uv run python manage.py seed_pcm
+```
+
+**3. Buat akun administrator**
+```bash
+docker compose exec web uv run python manage.py createsuperuser
+```
+
+Nama service `web` dapat disesuaikan dengan konfigurasi pada file `docker-compose.yml`.
+
+**4. Menghentikan container**
+```bash
+docker compose down
+```
+
+Perintah tersebut menghentikan container tanpa menghapus volume, sehingga data yang tersimpan tetap dipertahankan.
+
+**5. Menghapus data dan memulai dari awal**
+```bash
+docker compose down -v
+```
+
+Perintah tersebut menghapus volume `pgdata` dan `media` sehingga data database PostgreSQL dan file media yang tersimpan pada volume kembali kosong.
+
+Perintah ini berguna ketika ingin memulai konfigurasi website dari kondisi bersih.
+
+---
+
+## 13. Deployment Produksi
+
+| Parameter | Keterangan |
+|---|---|
+| URL Produksi | [Masukkan URL website produksi] |
+| Platform Deployment | Render |
+| Database | Neon PostgreSQL |
+| Penyimpanan Media | Supabase Storage |
+
+### Alasan Pemilihan Platform
+
+- **Render:** Digunakan untuk menjalankan aplikasi Django melalui Dockerfile.
+- **Neon PostgreSQL:** Digunakan sebagai database produksi berbasis cloud.
+- **Supabase Storage:** Digunakan untuk menyimpan file media seperti gambar profil, dokumen, dan file unggahan lainnya secara terpisah dari server aplikasi.
+
+URL produksi dicantumkan setelah website berhasil di-deploy dan dapat diakses secara publik.
+
+---
+
+## 14. Environment Variables
+
+Konfigurasi environment variable mengacu pada file `.env.example`.
+
+| Variabel | Fungsi |
+|---|---|
+| SECRET_KEY | Secret key Django untuk keamanan aplikasi |
+| DEBUG | Mengatur mode debug Django |
+| ALLOWED_HOSTS | Menentukan host yang diizinkan mengakses aplikasi |
+| DATABASE_URL | URL koneksi database PostgreSQL |
+| CSRF_TRUSTED_ORIGINS | Menentukan origin yang dipercaya untuk request CSRF |
+| AWS_ACCESS_KEY_ID | Access key untuk object storage |
+| AWS_SECRET_ACCESS_KEY | Secret access key untuk object storage |
+| AWS_STORAGE_BUCKET_NAME | Nama bucket penyimpanan media |
+| AWS_S3_ENDPOINT_URL | Endpoint object storage |
+| AWS_S3_REGION_NAME | Region object storage |
+
+Nama variabel di atas disesuaikan dengan konfigurasi aktual pada file `.env.example`.
+
+File `.env` berisi informasi rahasia dan tidak boleh dimasukkan ke repository GitHub.
+
+---
+
+## 15. Catatan Keamanan
+
+- File `.env` tidak boleh di-commit atau di-push ke repository.
+- Secret key Django dan kredensial database harus dijaga kerahasiaannya.
+- Akun administrator demo dikirimkan secara terpisah kepada dosen.
+- Username dan password akun administrator demo tidak dituliskan di dalam repository.
+- File `.env.example` hanya berisi contoh konfigurasi tanpa nilai rahasia yang sebenarnya.
+
+---
+
+## 16. Teknologi yang Digunakan
+
+| Teknologi | Fungsi |
+|---|---|
+| Python | Bahasa pemrograman |
+| Django | Framework pengembangan website |
+| PostgreSQL | Database |
+| uv | Pengelolaan dependencies Python |
+| Docker | Containerization aplikasi |
+| Render | Platform deployment |
+| Neon | Database PostgreSQL cloud |
+| Supabase Storage | Penyimpanan file media |
+| Git dan GitHub | Version control dan kolaborasi |
+
+---
