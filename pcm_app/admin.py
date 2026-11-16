@@ -125,18 +125,36 @@ class TautanTerkaitAdmin(admin.ModelAdmin):
 
 @admin.register(PesanMasuk)
 class PesanMasukAdmin(admin.ModelAdmin):
-    list_display = ('subjek', 'nama', 'email', 'waktu_kirim', 'status_baca')
+    list_display = (
+        'subjek',
+        'nama',
+        'email',
+        'waktu_kirim',
+        'status_baca',
+    )
+
     list_filter = ('sudah_dibaca', 'waktu_kirim')
     search_fields = ('nama', 'email', 'subjek')
-    readonly_fields = ('nama', 'email', 'subjek', 'pesan', 'waktu_kirim')
-    actions = ('tandai_dibaca', 'tandai_belum_dibaca')
+    readonly_fields = (
+        'nama',
+        'email',
+        'subjek',
+        'pesan',
+        'waktu_kirim',
+    )
 
     @admin.display(description='Status', ordering='sudah_dibaca')
     def status_baca(self, obj):
         if obj.sudah_dibaca:
-            return format_html('<span class="pcm-badge">Dibaca</span>')
-        return format_html('<span class="pcm-badge baru">Baru</span>')
+            return format_html(
+                '<span class="pcm-badge">{}</span>',
+                'Dibaca',
+            )
 
+        return format_html(
+            '<span class="pcm-badge baru">{}</span>',
+            'Baru',
+        )
     @admin.action(description='Tandai sudah dibaca')
     def tandai_dibaca(self, request, queryset):
         jumlah = queryset.update(sudah_dibaca=True)
