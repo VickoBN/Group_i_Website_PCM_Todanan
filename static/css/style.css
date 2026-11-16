@@ -393,12 +393,29 @@ form textarea {
   margin-bottom: 15px;
 }
 
-.footer-newsletter-form {
-  display: flex;
+
+/* Tombol Hubungi Kami di Footer */
+.footer-contact-btn {
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  max-width: 300px;
-  max-height: 40px;
+  padding: 12px 22px;
+  background: #ffffff;
+  color: #07583e;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 10px;
+  transition: 0.2s ease;
 }
+
+.footer-contact-btn:hover {
+  background: #e8f5ee;
+  color: #043f2c;
+  transform: translateY(-2px);
+}
+
 
 .footer-newsletter-form input {
   flex: 1;
