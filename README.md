@@ -219,15 +219,13 @@ docker compose down -v
 
 Perintah tersebut menghapus volume `pgdata` dan `media` sehingga data database PostgreSQL dan file media yang tersimpan pada volume kembali kosong.
 
-Perintah ini berguna ketika ingin memulai konfigurasi website dari kondisi bersih.
-
 ---
 
 ## 13. Deployment Produksi
 
 | Parameter | Keterangan |
 |---|---|
-| URL Produksi | [Masukkan URL website produksi] |
+| URL Produksi | https://group-i-website-pcm-todanan.onrender.com |
 | Platform Deployment | Render |
 | Database | Neon PostgreSQL |
 | Penyimpanan Media | Supabase Storage |
@@ -237,8 +235,6 @@ Perintah ini berguna ketika ingin memulai konfigurasi website dari kondisi bersi
 - **Render:** Digunakan untuk menjalankan aplikasi Django melalui Dockerfile.
 - **Neon PostgreSQL:** Digunakan sebagai database produksi berbasis cloud.
 - **Supabase Storage:** Digunakan untuk menyimpan file media seperti gambar profil, dokumen, dan file unggahan lainnya secara terpisah dari server aplikasi.
-
-URL produksi dicantumkan setelah website berhasil di-deploy dan dapat diakses secara publik.
 
 ---
 
@@ -259,23 +255,9 @@ Konfigurasi environment variable mengacu pada file `.env.example`.
 | AWS_S3_ENDPOINT_URL | Endpoint object storage |
 | AWS_S3_REGION_NAME | Region object storage |
 
-Nama variabel di atas disesuaikan dengan konfigurasi aktual pada file `.env.example`.
-
-File `.env` berisi informasi rahasia dan tidak boleh dimasukkan ke repository GitHub.
-
 ---
 
-## 15. Catatan Keamanan
-
-- File `.env` tidak boleh di-commit atau di-push ke repository.
-- Secret key Django dan kredensial database harus dijaga kerahasiaannya.
-- Akun administrator demo dikirimkan secara terpisah kepada dosen.
-- Username dan password akun administrator demo tidak dituliskan di dalam repository.
-- File `.env.example` hanya berisi contoh konfigurasi tanpa nilai rahasia yang sebenarnya.
-
----
-
-## 16. Teknologi yang Digunakan
+## 15. Teknologi yang Digunakan
 
 | Teknologi | Fungsi |
 |---|---|
